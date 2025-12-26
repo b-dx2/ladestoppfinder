@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔌 Ladestoppfinder 🍔</title>
+    <!-- Favicon-Einbindung (PNG) -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+    <style>
+        /* --- CSS VARIABLES & THEMES --- */
+        :root {
+            /* Default: Dark Mode */
+            --bg-color: #121212;
+            --header-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --card-bg: #2c2c2c;
+            
+            /* Picker Colors */
+            --picker-bg: #333;
+            --picker-highlight: rgba(255, 255, 255, 0.1);
+            --charger-color: #64b5f6; /* Hellblau */
+            --food-color: #ffb74d;    /* Orange */
+        }
+
+        /* Light Mode Klasse */
+        body.light-mode {
+            --bg-color: #f5f5f5;
+            --header-bg: #ffffff;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --picker-bg: #e0e0e0;
+            --picker-highlight: rgba(0, 0, 0, 0.05);
+            --charger-color: #1976d2; /* Dunkleres Blau */
+            --food-color: #d84315;    /* Dunkleres Orange */
+        }
+
+        /* --- BASIC SETUP --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 1rem 1rem 0 1rem; /* Unten weniger Padding, da Picker Platz brauchen */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        h1 {
+            margin: 0 0 1rem 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            background: var(--card-bg);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid #555;
+            user-select: none;
+        }
+
+        /* --- PICKER STYLES --- */
+        .picker-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            height: 160px; /* Container muss hoch genug sein */
+        }
+
+        .picker-separator {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-top: -10px; /* Optische Korrektur zur Mitte */
+            text-shadow: 0 0 10px rgba(255,255,255,0.2);
+        }
+
+        .wheel-picker {
+            width: 180px; /* Breiter für langen Text */
+            height: 150px; /* Zeigt jetzt 3 Items an (3 x 50px) */
+            background-color: var(--picker-bg);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+
+            /* HIER PASSIERT DIE MAGIE FÜR DIE TRANSPARENZ:
+               Wir maskieren oben und unten ab, damit es "ausfaded" */
+            -webkit-mask-image: linear-gradient(to bottom, 
+                transparent 0%, 
+                black 35%, 
+                black 65%, 
+                transparent 100%);
+            mask-image: linear-gradient(to bottom, 
+                transparent 0%, 
+                black 35%, 
+                black 65%, 
+                transparent 100%);
+        }
+
+        .charger-picker { border-color: var(--charger-color); color: var(--charger-color); }
+        .restaurant-picker { border-color: var(--food-color); color: var(--food-color); }
+
+        .picker-strip {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* Startposition: Wir schieben es etwas hoch, damit man Text sieht, aber nicht den Anfang */
+            transform: translateY(0); 
+            /* 3 Sekunden Dauer, cubic-bezier für langsames Ausrollen */
+            transition: transform 3.0s cubic-bezier(0.1, 0.9, 0.3, 1.0);
+        }
+
+        .picker-item {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            /* Verhindert Umbruch bei langem Text */
+            white-space: nowrap; 
+        }
+
+        /* Highlight Balken (Mitte) */
+        .picker-highlight-bar {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 50px; /* Genau so hoch wie ein Item */
+            margin-top: -25px; /* Exakt zentrieren */
+            background-color: var(--picker-highlight);
+            pointer-events: none;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            z-index: -1; /* Hinter dem Text */
+        }
+
+        /* --- MAP & ICONS --- */
+        #map {
+            flex-grow: 1;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .custom-div-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+            font-size: 10px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        .icon-charger { border-radius: 50%; border: 2px solid white; }
+        .bg-tesla { background: #e82127; }
+        .bg-ionity { background: #1e3d59; }
+        .bg-enbw { background: #76c043; }
+        .icon-food { border-radius: 4px; border: 2px solid white; }
+        .bg-mcd { background: #ffc72c; color: #da291c; }
+        .bg-bk { background: #512814; color: #f3ce8e; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Ladestoppfinder</h1>
+        <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">☀️ / 🌙</div>
+
+        <div class="picker-container">
+            <!-- CHARGER PICKER -->
+            <div class="wheel-picker charger-picker">
+                <!-- Highlight Balken feststehend in der Mitte -->
+                <div class="picker-highlight-bar"></div>
+                
+                <div class="picker-strip" id="chargerStrip">
+                    <!-- Viele Items für lange Rotation -->
+                    <div class="picker-item">Tesla</div>
+                    <div class="picker-item">IONITY</div>
+                    <div class="picker-item">EnBW</div>
+                    <div class="picker-item">Tesla</div>
+                    <div class="picker-item">IONITY</div>
+                    <div class="picker-item">EnBW</div>
+                    <div class="picker-item">Tesla</div>
+                    <div class="picker-item">IONITY</div>
+                    <div class="picker-item">EnBW</div>
+                    <div class="picker-item">Tesla</div>
+                    <div class="picker-item">IONITY</div>
+                    <div class="picker-item">EnBW</div>
+                    <div class="picker-item">Tesla</div>
+                    <div class="picker-item">IONITY</div>
+                    <div class="picker-item">EnBW</div>
+                    <div class="picker-item">Tesla</div>
+                    <div class="picker-item">IONITY</div>
+                    <div class="picker-item">EnBW</div>
+                    
+                    <!-- ZIELTEXT -->
+                    <div class="picker-item" id="target-charger">Alle Ladeanbieter</div>
+                    
+                    <!-- Dummies danach, damit unten nichts leer ist -->
+                    <div class="picker-item" style="opacity:0.5">Tesla</div>
+                    <div class="picker-item" style="opacity:0.3">IONITY</div>
+                </div>
+            </div>
+
+            <div class="picker-separator">&</div>
+
+            <!-- RESTAURANT PICKER -->
+            <div class="wheel-picker restaurant-picker">
+                <div class="picker-highlight-bar"></div>
+
+                <div class="picker-strip" id="restaurantStrip">
+                    <!-- Viele Items für lange Rotation -->
+                    <div class="picker-item">McDonalds</div>
+                    <div class="picker-item">BurgerKing</div>
+                    <div class="picker-item">McDonalds</div>
+                    <div class="picker-item">BurgerKing</div>
+                    <div class="picker-item">McDonalds</div>
+                    <div class="picker-item">BurgerKing</div>
+                    <div class="picker-item">McDonalds</div>
+                    <div class="picker-item">BurgerKing</div>
+                    <div class="picker-item">McDonalds</div>
+                    <div class="picker-item">BurgerKing</div>
+                    <div class="picker-item">McDonalds</div>
+                    <div class="picker-item">BurgerKing</div>
+                    <div class="picker-item">McDonalds</div>
+                    <div class="picker-item">BurgerKing</div>
+                    <div class="picker-item">McDonalds</div>
+                    <div class="picker-item">BurgerKing</div>
+                    
+                    <!-- ZIELTEXT -->
+                    <div class="picker-item" id="target-restaurant">Alle Restaurants</div>
+                    
+                    <!-- Dummies danach -->
+                    <div class="picker-item" style="opacity:0.5">McDonalds</div>
+                    <div class="picker-item" style="opacity:0.3">BurgerKing</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="map"></main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+    <script>
+    /* --------------------------------------------------
+       1. GLOBALE VARIABLEN & CONFIG
+    -------------------------------------------------- */
+    let allData = []; 
+
+    let filters = {
+        charger: 'Alle Ladeanbieter', 
+        food: 'Alle Restaurants'
+    };
+
+    const markerGroup = L.layerGroup(); 
+
+    /* --------------------------------------------------
+       2. THEME SETUP
+    -------------------------------------------------- */
+    function initTheme() {
+        if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+    }
+    function toggleTheme() {
+        document.body.classList.toggle('light-mode');
+        localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    }
+
+    /* --------------------------------------------------
+       3. KARTEN SETUP
+    -------------------------------------------------- */
+    const map = L.map('map').setView([51.0504, 13.5], 9);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19, attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    markerGroup.addTo(map); 
+
+    /* --------------------------------------------------
+       4. DATEN LOGIK (FILTERN & MARKER)
+    -------------------------------------------------- */
+    function isMatch(entry) {
+        if (entry.type === 'charger') {
+            if (filters.charger === 'Alle Ladeanbieter') return true;
+            return entry.brand === filters.charger;
+        }
+        if (entry.type === 'food') {
+            if (filters.food === 'Alle Restaurants') return true;
+            return entry.brand === filters.food; 
+        }
+        return false;
+    }
+
+    function renderMarkers() {
+        markerGroup.clearLayers(); 
+
+        allData.forEach(entry => {
+            if (isMatch(entry)) {
+                const shapeClass = entry.type === 'charger' ? 'icon-charger' : 'icon-food';
+                const myIcon = L.divIcon({
+                    className: `custom-div-icon ${shapeClass} ${entry.class}`,
+                    html: entry.brand.substring(0,1), 
+                    iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12]
+                });
+
+                const popupContent = `
+                    <div style="text-align:center;">
+                        <strong style="font-size:1.1em">${entry.brand}</strong><br>
+                        ${entry.name}<br>
+                         <small style="opacity:0.7">${entry.type === 'charger' ? '⚡ Ladestation' : '🍔 Restaurant'}</small>
+                    </div>`;
+
+                L.marker([entry.lat, entry.lon], {icon: myIcon})
+                    .addTo(markerGroup)
+                    .bindPopup(popupContent);
+            }
+        });
+    }
+
+    async function loadData() {
+        try {
+            const response = await fetch('data.json');
+            if (!response.ok) throw new Error("Datei nicht gefunden");
+            allData = await response.json();
+            renderMarkers(); 
+            console.log(allData.length + " Marker geladen.");
+        } catch (error) {
+            console.error("Fehler:", error);
+        }
+    }
+
+    /* --------------------------------------------------
+       5. PICKER LOGIK (WALZEN)
+    -------------------------------------------------- */
+    const itemHeight = 50; 
+    const pickerHeight = 150; 
+
+    function scrollToOption(stripId, targetText) {
+        const strip = document.getElementById(stripId);
+        const items = Array.from(strip.querySelectorAll('.picker-item'));
+        
+        // Wir suchen exakt den Text oder "enthält" (für 'Alle...')
+        const targetIndex = items.findIndex(item => item.innerText.includes(targetText));
+
+        if (targetIndex !== -1) {
+            const centerOffset = (pickerHeight / 2) - (itemHeight / 2); 
+            const totalScroll = (targetIndex * itemHeight) - centerOffset;
+            strip.style.transform = `translateY(-${totalScroll}px)`;
+
+            // WICHTIG: Wir speichern den EXAKTEN Text des gefundenen Items, 
+            // damit die Scroll-Funktion später den genauen Vergleich (===) machen kann.
+            const exactText = items[targetIndex].innerText;
+
+            if (stripId === 'chargerStrip') filters.charger = exactText;
+            if (stripId === 'restaurantStrip') filters.food = exactText;
+
+            renderMarkers();
+        }
+    }
+
+    function initInteractions() {
+        const setupStrip = (stripId) => {
+            const strip = document.getElementById(stripId);
+            const items = strip.querySelectorAll('.picker-item');
+
+            items.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    scrollToOption(stripId, e.target.innerText);
+                });
+                item.style.cursor = 'pointer'; 
+            });
+        };
+        setupStrip('chargerStrip');
+        setupStrip('restaurantStrip');
+    }
+
+    // --- NEU: Mausrad Steuerung ---
+    function initWheelControl() {
+        const setupWheel = (pickerId, filterKey) => {
+            const strip = document.getElementById(pickerId);
+            const container = strip.parentElement; 
+
+            let isScrolling = false; 
+
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault(); 
+
+                if (isScrolling) return;
+                isScrolling = true;
+                setTimeout(() => { isScrolling = false; }, 150); // Etwas schneller als 200ms für besseres Gefühl
+
+                const direction = e.deltaY > 0 ? 1 : -1;
+                const items = Array.from(strip.querySelectorAll('.picker-item'));
+                
+                // Aktuellen Text aus dem Filter holen
+                const currentText = filters[filterKey];
+                
+                // Index finden - hier müssen wir exakt vergleichen
+                let currentIndex = items.findIndex(i => i.innerText === currentText);
+                
+                // Fallback: Falls beim Start noch nichts gesetzt ist, nehmen wir "Alle..."
+                if (currentIndex === -1) {
+                     currentIndex = items.findIndex(i => i.innerText.includes("Alle"));
+                }
+
+                let newIndex = currentIndex + direction;
+
+                // Grenzen prüfen
+                if (newIndex < 0) newIndex = 0;
+                if (newIndex >= items.length) newIndex = items.length - 1;
+
+                if (newIndex !== currentIndex) {
+                    scrollToOption(pickerId, items[newIndex].innerText);
+                }
+
+            }, { passive: false });
+        };
+
+        setupWheel('chargerStrip', 'charger');
+        setupWheel('restaurantStrip', 'food');
+    }
+
+    /* --------------------------------------------------
+       6. INIT (START)
+    -------------------------------------------------- */
+    window.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+        
+        // HIER WAR DER FEHLER: Die Funktionen wurden nicht aufgerufen!
+        initInteractions(); 
+        initWheelControl(); // <--- DAS HAT GEFEHLT!
+        
+        loadData();         
+
+        // Initiale Animation nach Start
+        setTimeout(() => {
+            scrollToOption('chargerStrip', 'Alle Ladeanbieter');
+            scrollToOption('restaurantStrip', 'Alle Restaurants');
+        }, 300);
+    });
+    </script>
+</body>
+</html>
