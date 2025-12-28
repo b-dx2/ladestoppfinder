@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔌 Ladestoppfinder 🍔</title>
+    <subtitle>Stand: 26.12.2025</subtitle>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+    <style>
+        /* --- CSS VARIABLES & THEMES --- */
+        :root {
+            /* Default: Dark Mode */
+            --bg-color: #121212;
+            --header-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --card-bg: #2c2c2c;
+
+            /* Wheel Colors */
+            --wheel-bg: #252525;
+            --wheel-border: #333;
+            
+            /* Akzentfarben */
+            --charger-color: #4facfe; /* Hellblau */
+            --food-color: #ffb74d;    /* Orange */
+        }
+
+        /* Light Mode Klasse */
+        body.light-mode {
+            --bg-color: #f5f5f5;
+            --header-bg: #ffffff;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --wheel-bg: #e0e0e0;
+            --wheel-border: #ccc;
+            --charger-color: #1976d2;
+            --food-color: #d84315;
+        }
+
+        /* --- BASIC SETUP --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 0.5rem 1rem 0 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            background: var(--card-bg);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid #555;
+            user-select: none;
+        }
+
+        /* --- MAP --- */
+        #map {
+            flex-grow: 1;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .custom-div-icon {
+            background-color: var(--header-bg);
+            border-radius: 50%;
+            border: 2px solid white;
+            text-align: center;
+            line-height: 26px; /* icon size - border */
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* Marker Farben basierend auf Anbieter (Klassen kommen aus JSON badge_class) */
+        .custom-div-icon.tesla { border-color: #e82127; color: #e82127; }
+        .custom-div-icon.ionity { border-color: #e40046; color: #e40046; }
+        .custom-div-icon.enbw { border-color: #004595; color: #004595; }
+        .custom-div-icon.fastned { border-color: #fcc400; color: #fcc400; }
+
+        /* --- WHEEL CONTAINER LAYOUT --- */
+        .picker-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            height: 180px; /* Platz für die Räder */
+            padding-bottom: 15px;
+        }
+
+        .picker-separator {
+            font-size: 1.5rem;
+            font-weight: bold;
+            opacity: 0.5;
+            margin-top: -10px;
+        }
+
+        /* --- WHEEL COMPONENT STYLES --- */
+        .wheel-container {
+            width: 160px;
+            height: 140px;
+            position: relative;
+            overflow: hidden;
+            background: var(--wheel-bg);
+            border: 1px solid var(--wheel-border);
+            border-radius: 16px;
+            cursor: grab;
+            user-select: none;
+            /* Schatten innen für Tiefe */
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        .wheel-container:active {
+            cursor: grabbing;
+        }
+
+        /* Highlight-Box in der Mitte */
+        .wheel-highlight {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 40px;
+            border-radius: 8px;
+            pointer-events: none;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.05);
+            /* Border und Shadow werden per ID (blau/orange) überschrieben */
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Spezifische Farben für Charger (Blau) */
+        #wheel-charger .wheel-highlight {
+            border-color: var(--charger-color);
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.2);
+            background: rgba(79, 172, 254, 0.05);
+        }
+
+        /* Spezifische Farben für Food (Orange) */
+        #wheel-food .wheel-highlight {
+            border-color: var(--food-color);
+            box-shadow: 0 0 15px rgba(255, 183, 77, 0.2);
+            background: rgba(255, 183, 77, 0.05);
+        }
+
+        /* Fade-Effekte oben und unten */
+        .wheel-fade-top,
+        .wheel-fade-bottom {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .wheel-fade-top {
+            top: 0;
+            background: linear-gradient(to bottom, var(--wheel-bg) 0%, transparent 100%);
+        }
+
+        .wheel-fade-bottom {
+            bottom: 0;
+            background: linear-gradient(to top, var(--wheel-bg) 0%, transparent 100%);
+        }
+
+        /* Das bewegliche Element */
+        .wheel-scroll {
+            position: relative;
+            width: 100%;
+            will-change: transform;
+            /* Standard: Keine Transition für direktes Following */
+        }
+
+        .wheel-scroll.snapping {
+            /* Physik für das Einrasten */
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .wheel-item {
+            height: 40px; /* Muss zur Highlight-Höhe passen */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-color);
+            opacity: 0.4;
+            transition: opacity 0.2s, transform 0.2s;
+            white-space: nowrap;
+        }
+
+        /* Active State Styles */
+        .wheel-item.active {
+            opacity: 1;
+            font-weight: 700;
+            transform: scale(1.1);
+        }
+
+        #wheel-charger .wheel-item.active { color: var(--charger-color); }
+        #wheel-food .wheel-item.active { color: var(--food-color); }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Ladestopp Planer</h1>
+        <div class="theme-toggle" onclick="toggleTheme()">🌓 Mode</div>
+
+        <!-- Wheel Implementation -->
+        <div class="picker-area">
+            
+            <!-- Charger Wheel -->
+            <div class="wheel-container" id="wheel-charger">
+                <div class="wheel-fade-top"></div>
+                <div class="wheel-highlight"></div>
+                <div class="wheel-scroll"></div>
+                <div class="wheel-fade-bottom"></div>
+            </div>
+
+            <div class="picker-separator">+</div>
+
+            <!-- Food Wheel -->
+            <div class="wheel-container" id="wheel-food">
+                <div class="wheel-fade-top"></div>
+                <div class="wheel-highlight"></div>
+                <div class="wheel-scroll"></div>
+                <div class="wheel-fade-bottom"></div>
+            </div>
+
+        </div>
+    </header>
+
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+    <script>
+        /* --------------------------------------------------
+           1. DATA & VARIABLES
+        -------------------------------------------------- */
+        let allData = [];
+        let currentFilters = { chargerId: 'all', foodId: 'all' };
+        const markerGroup = L.layerGroup();
+        
+        // Map Init
+        const map = L.map('map').setView([50.35, 12.5], 8); 
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap' }).addTo(map);
+        markerGroup.addTo(map);
+
+        // Options Definition
+        const chargerOptions = [
+            { id: 'all', text: 'Alle Ladeanbieter' },
+            { id: 'tesla', text: 'Tesla' },
+            { id: 'ionity', text: 'IONITY' },
+            { id: 'enbw', text: 'EnBW' },
+            { id: 'fastned', text: 'Fastned' }
+        ];
+
+        const foodOptions = [
+            { id: 'all', text: 'Alle Restaurants' },
+            { id: 'mcdonald', text: "McDonald's" },
+            { id: 'burger king', text: 'Burger King' },
+            { id: 'lounge', text: 'Coffee / Lounge' },
+            { id: 'subway', text: 'Subway' }
+        ];
+
+        /* --------------------------------------------------
+           2. GENERIC WHEEL CLASS (Snappy Logic)
+        -------------------------------------------------- */
+        class SnappyWheel {
+            constructor(containerId, options, onSelectCallback, startId = 'all') {
+                this.container = document.getElementById(containerId);
+                this.wheelWrap = this.container.querySelector('.wheel-scroll');
+                this.options = options;
+                this.onSelect = onSelectCallback;
+                
+                this.itemHeight = 40; // Pixelhöhe eines Items (muss zu CSS passen)
+                this.snapTimer = null;
+                this.currentTranslate = 0;
+                
+                // Wir verdreifachen die Liste für den Infinite-Scroll-Effekt
+                this.dataset = [...options, ...options, ...options];
+
+                this.init(startId);
+            }
+
+            init(startId) {
+                // DOM erstellen
+                this.wheelWrap.innerHTML = '';
+                this.dataset.forEach((opt, i) => {
+                    const el = document.createElement('div');
+                    el.className = 'wheel-item';
+                    el.textContent = opt.text;
+                    el.dataset.id = opt.id;
+                    el.dataset.originalIndex = i % this.options.length; // Index im Original-Array
+                    this.wheelWrap.appendChild(el);
+                });
+
+                // Events
+                this.attachEvents();
+
+                // Startposition berechnen (Mitte der Liste beim gewünschten Item)
+                const centerSetOffset = this.options.length * this.itemHeight; // Offset für das 2. Set
+                const targetIndexInSet = this.options.findIndex(o => o.id === startId);
+                const startY = -centerSetOffset - (targetIndexInSet * this.itemHeight) + (this.container.clientHeight / 2) - (this.itemHeight / 2);
+                
+                this.currentTranslate = startY;
+                this.updatePosition(this.currentTranslate, true); // True = initial update (active class trigger)
+            }
+
+            attachEvents() {
+                // 1. Mouse Wheel
+                this.container.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    this.handleScroll(e.deltaY);
+                }, { passive: false });
+
+                // 2. Touch
+                let touchStartY = 0;
+                let touchLastY = 0;
+
+                this.container.addEventListener('touchstart', (e) => {
+                    touchStartY = e.touches[0].clientY;
+                    touchLastY = touchStartY;
+                    this.clearSnapTimer();
+                    this.wheelWrap.classList.remove('snapping');
+                }, { passive: true });
+
+                this.container.addEventListener('touchmove', (e) => {
+                    const deltaY = touchLastY - e.touches[0].clientY; // invertiert, da Swipe up = scroll down
+                    touchLastY = e.touches[0].clientY;
+                    this.handleScroll(deltaY);
+                }, { passive: true });
+
+                this.container.addEventListener('touchend', () => {
+                    this.activateSnapping();
+                }, { passive: true });
+            }
+
+            handleScroll(delta) {
+                this.clearSnapTimer();
+                this.wheelWrap.classList.remove('snapping');
+
+                // Dämpfung für sanftes Scrollen
+                this.currentTranslate -= delta * 0.8;
+                
+                this.updatePosition(this.currentTranslate);
+
+                // Wenn Scroll endet, timer für Snap starten
+                this.snapTimer = setTimeout(() => {
+                    this.activateSnapping();
+                }, 80);
+            }
+
+            clearSnapTimer() {
+                if (this.snapTimer) {
+                    clearTimeout(this.snapTimer);
+                    this.snapTimer = null;
+                }
+            }
+
+            activateSnapping() {
+                // Berechne den nächsten "Slot"
+                // Wir beziehen uns auf die Mitte des Containers
+                const containerCenter = this.container.clientHeight / 2;
+                const offset = this.currentTranslate - containerCenter + (this.itemHeight / 2);
+                const rawIndex = Math.round(offset / this.itemHeight);
+                
+                const targetTranslate = (rawIndex * this.itemHeight) + containerCenter - (this.itemHeight / 2);
+
+                this.wheelWrap.classList.add('snapping');
+                this.currentTranslate = targetTranslate;
+                this.updatePosition(this.currentTranslate);
+
+                // Nach Animation (300-400ms) finalen Wert senden
+                setTimeout(() => {
+                    this.triggerSelection();
+                }, 400);
+            }
+
+            updatePosition(translate, forceSelect = false) {
+                // --- INFINITE SCROLL LOGIC ---
+                // Wenn wir zu weit oben oder unten sind, springen wir unbemerkt in den mittleren Block
+                const singleBlockHeight = this.options.length * this.itemHeight;
+                const totalHeight = this.dataset.length * this.itemHeight;
+                
+                // Wir definieren "Grenzen". Wenn wir das obere Drittel verlassen...
+                const threshold = -singleBlockHeight / 2; // grober anker
+                
+                // Da translate negativ ist: 
+                // Wenn translate > 0 (wir sind ganz oben über dem Inhalt) -> springe zurück
+                // Einfachere Logik: Wir schauen uns das "aktive" Element an.
+                
+                const containerCenter = this.container.clientHeight / 2;
+                
+                this.wheelWrap.style.transform = `translateY(${translate}px)`;
+
+                // --- VISUALS (Active Class & Opacity) ---
+                const items = this.wheelWrap.querySelectorAll('.wheel-item');
+                let activeCandidate = null;
+                let minDist = Infinity;
+
+                items.forEach(item => {
+                    // Position des Items relativ zum Container
+                    // itemY = translate + (index * height)
+                    // Wir rechnen einfacher mit getBoundingClientRect für Präzision nach Render
+                    // Aber für Performance im Loop besser math:
+                    // Wir wissen nicht den exakten DOM-Index hier im Loop einfach, daher Rect:
+                    const rect = item.getBoundingClientRect();
+                    const contRect = this.container.getBoundingClientRect();
+                    const itemCenter = rect.top + (rect.height / 2) - contRect.top;
+                    const dist = Math.abs(itemCenter - containerCenter);
+
+                    // Skalierung/Opacity basierend auf Distanz
+                    if (dist < this.itemHeight / 2) {
+                        item.classList.add('active');
+                        item.style.opacity = 1;
+                        activeCandidate = item;
+                    } else {
+                        item.classList.remove('active');
+                        // Opacity Curve
+                        const opacity = Math.max(0.1, 1 - (dist / (this.container.clientHeight * 0.6)));
+                        item.style.opacity = opacity;
+                    }
+                });
+
+                // Infinite Jump Check (während des Scrollens, ohne Animation)
+                if (!this.wheelWrap.classList.contains('snapping') && activeCandidate) {
+                    // Wo sind wir im DOM Array?
+                    const domIndex = Array.from(items).indexOf(activeCandidate);
+                    
+                    // Sind wir im ersten Drittel?
+                    if (domIndex < this.options.length) {
+                        // Spring ins mittlere Drittel
+                        this.currentTranslate -= singleBlockHeight;
+                        this.wheelWrap.style.transform = `translateY(${this.currentTranslate}px)`;
+                    } 
+                    // Sind wir im letzten Drittel?
+                    else if (domIndex >= this.options.length * 2) {
+                        // Spring ins mittlere Drittel
+                        this.currentTranslate += singleBlockHeight;
+                        this.wheelWrap.style.transform = `translateY(${this.currentTranslate}px)`;
+                    }
+                }
+
+                if (forceSelect && activeCandidate) {
+                    this.reportSelection(activeCandidate);
+                }
+            }
+
+            triggerSelection() {
+                const activeItem = this.wheelWrap.querySelector('.wheel-item.active');
+                if (activeItem) {
+                    this.reportSelection(activeItem);
+                }
+            }
+
+            reportSelection(el) {
+                const id = el.dataset.id;
+                if (this.onSelect) this.onSelect(id);
+            }
+        }
+
+        /* --------------------------------------------------
+           3. APP LOGIC
+        -------------------------------------------------- */
+        
+        // 1. Theme Check
+        if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+        }
+
+        // 2. Data Loading & Rendering
+        async function loadData() {
+            try {
+                // Dummy Data Generator falls keine JSON da ist (zum Testen)
+                // In Prod: const res = await fetch('data.json');
+                // allData = await res.json();
+                
+                // Simulation, falls du die Datei lokal nicht hast:
+                if (allData.length === 0) {
+                     // Versuche Fetch, Fallback auf Mock
+                     try {
+                        const response = await fetch('data.json?t=' + new Date().getTime());
+                        if (response.ok) {
+                            allData = await response.json();
+                        } else { throw new Error(); }
+                     } catch(e) {
+                         console.log("Nutze Mock-Daten...");
+                         allData = [
+                             { lat: 50.1, lon: 8.6, description: "Tesla & BK", charger_id: "tesla", food_id: "burger king", badge_class: "tesla" },
+                             { lat: 48.1, lon: 11.5, description: "Ionity & McD", charger_id: "ionity", food_id: "mcdonald", badge_class: "ionity" },
+                             { lat: 52.5, lon: 13.4, description: "EnBW & Subway", charger_id: "enbw", food_id: "subway", badge_class: "enbw" },
+                             { lat: 51.2, lon: 6.7, description: "Fastned & Lounge", charger_id: "fastned", food_id: "lounge", badge_class: "fastned" }
+                         ];
+                     }
+                }
+                
+                renderMarkers();
+            } catch (error) { console.error(error); }
+        }
+
+        function renderMarkers() {
+            markerGroup.clearLayers();
+            let count = 0;
+            allData.forEach(entry => {
+                const cMatch = (currentFilters.chargerId === 'all') || (entry.charger_id === currentFilters.chargerId);
+                const fMatch = (currentFilters.foodId === 'all') || (entry.food_id === currentFilters.foodId);
+
+                if (cMatch && fMatch) {
+                    count++;
+                    const myIcon = L.divIcon({
+                        className: `custom-div-icon ${entry.badge_class}`,
+                        html: `⚡`,
+                        iconSize: [30, 30],
+                        iconAnchor: [15, 15]
+                    });
+                    L.marker([entry.lat, entry.lon], {icon: myIcon}).addTo(markerGroup).bindPopup(entry.description);
+                }
+            });
+            console.log("Filtered Matches:", count);
+        }
+
+        /* --------------------------------------------------
+           4. INIT
+        -------------------------------------------------- */
+        window.addEventListener('DOMContentLoaded', () => {
+            
+            // Räder initialisieren
+            const chargerWheel = new SnappyWheel('wheel-charger', chargerOptions, (id) => {
+                // Callback wenn das Rad stoppt
+                if (currentFilters.chargerId !== id) {
+                    currentFilters.chargerId = id;
+                    renderMarkers();
+                }
+            }, 'all');
+
+            const foodWheel = new SnappyWheel('wheel-food', foodOptions, (id) => {
+                // Callback wenn das Rad stoppt
+                if (currentFilters.foodId !== id) {
+                    currentFilters.foodId = id;
+                    renderMarkers();
+                }
+            }, 'all');
+
+            loadData();
+        });
+
+    </script>
+</body>
+</html>
