@@ -1,0 +1,1 @@
+const standDaten = "Mai 2024";

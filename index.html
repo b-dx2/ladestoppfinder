@@ -189,6 +189,11 @@
         }
         .imprint-box strong { color: var(--text-color); }
     </style>
+
+<div style="position: absolute; top: 10px; right: 10px; background: white; padding: 5px 10px; border-radius: 5px; z-index: 1000; font-family: sans-serif; box-shadow: 0 0 5px rgba(0,0,0,0.3);">
+    Stand: <span id="datum-anzeige">Lade...</span>
+</div>
+
 </head>
 <body>
 
@@ -228,9 +233,21 @@
                 <span id="theme-btn-text">Dunkler Modus</span> <span>☀️/🌙</span>
             </button>
 
+            <!-- 1. Das vom Scraper erstellte Datum laden -->
+            <script src="meta.js"></script>
+
+
             <h2>Hintergrund</h2>
             <p>Wer kennt das nicht: Man sitzt im Auto, weiß man muss eh noch laden und würde das gern mit einem kurzen Snack verbinden. Aber wo? "Charge and eat" bietet die Lösung.</p>
-            <p>Die Datenbank wird regelmäßig aktualisiert.<br><span style="color: var(--charger-color); font-weight: bold;">Aktueller Stand: 01/2026</span></p>
+            <p>Die Datenbank wird regelmäßig aktualisiert.<br>
+                <span style="color: var(--charger-color); font-weight: bold;">Aktueller Stand: 
+                    <!-- 2. Den Text in das HTML-Element schreiben -->
+                    <script>
+                        if (typeof standDaten !== 'undefined') {
+                            document.getElementById('datum-anzeige').innerText = standDaten;
+                        }
+                    </script>
+                </span></p>
             <p>Feature Request? <a href="mailto:contact@chargeandeat.de?subject=Featurerequest">contact@chargeandeat.de</a>.</p>
 
             <h2>Datenschutz & Co.</h2>

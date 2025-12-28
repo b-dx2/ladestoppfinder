@@ -2,6 +2,7 @@ import requests
 import json
 import math
 import time
+import datetime
 
 # --- KONFIGURATION DEUTSCHLAND ---
 
@@ -235,31 +236,53 @@ print(f"💾 Speichere {len(all_matches)} Orte in {OUTPUT_FILENAME}...")
 # with open(OUTPUT_FILENAME, 'w', encoding='utf-8') as f:
 #     json.dump(all_matches, f, ensure_ascii=False, indent=2)
 
-# --- TEIL AM ENDE DES SKRIPTS EINFÜGEN ---
+# --- DAS KOMMT GANZ ANS ENDE DES SKRIPTS ---
 
-# 1. Alte Datei lesen (um Vergleich zu haben)
-try:
-    with open(OUTPUT_FILENAME, 'r', encoding='utf-8') as f:
-        old_data = json.load(f)
-        old_count = len(old_data)
-except:
-    old_count = 0
+# 1. Alte Datei lesen (für den Vergleich)
+old_count = 0
+if os.path.exists(OUTPUT_FILENAME):
+    try:
+        with open(OUTPUT_FILENAME, 'r', encoding='utf-8') as f:
+            old_data = json.load(f)
+            old_count = len(old_data)
+    except:
+        pass # Datei existierte wohl noch nicht
 
-# 2. Neue Daten speichern (das hast du schon, hier nur der Vollständigkeit halber)
+new_count = len(merged_data)
+diff = new_count - old_count
+
+print(f"------------------------------------------------")
+print(f"✅ FERTIG! Alt: {old_count} -> Neu: {new_count} (Diff: {diff:+d})")
+print(f"Speichere in {OUTPUT_FILENAME}...")
+
 with open(OUTPUT_FILENAME, 'w', encoding='utf-8') as f:
     json.dump(merged_data, f, ensure_ascii=False, indent=2)
 
-# 3. Statistik berechnen
-new_count = len(merged_data)
-diff = new_count - old_count
-diff_sign = "+" if diff >= 0 else "" # Damit da "+5" steht und nicht nur "5"
+# 2. GitHub Actions Integration
+# Das hier wird nur ausgeführt, wenn das Skript auf GitHub läuft
+if "GITHUB_STEP_SUMMARY" in os.environ:
+    # A. Schöne Übersicht auf der "Actions"-Startseite erstellen
+    with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+        f.write("# 🗺️ Karten-Update Report\n")
+        f.write(f"Das monatliche Update war erfolgreich.\n\n")
+        f.write("| Typ | Anzahl |\n|---|---|\n")
+        f.write(f"| 📉 Vorher | {old_count} |\n")
+        f.write(f"| 📈 Nachher | {new_count} |\n")
+        f.write(f"| 📊 Differenz | **{diff:+d}** |\n")
 
-print(f"Statistik: Alt={old_count}, Neu={new_count}, Diff={diff_sign}{diff}")
-
-# 4. Werte an GitHub Actions übergeben (nur wenn wir auf dem Server laufen)
-import os
 if "GITHUB_OUTPUT" in os.environ:
-    with open(os.environ["GITHUB_OUTPUT"], "a") as gh_out:
-        gh_out.write(f"NEW_COUNT={new_count}\n")
-        gh_out.write(f"DIFF={diff_sign}{diff}\n")
-        gh_out.write(f"MSG=Update: {new_count} Einträge ({diff_sign}{diff})\n")
+    # B. Daten an den nächsten Schritt im Workflow übergeben (für die Commit-Message)
+    with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+        f.write(f"stats_msg={new_count} Einträge ({diff:+d})\n")
+        
+# --- NEU: Datum für die Webseite speichern ---
+now = datetime.datetime.now()
+monate = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
+# Format: Monat Jahr (z.B. "Mai 2024")
+date_str = f"{monate[now.month-1]} {now.year}"
+
+# Wir speichern das als kleine JavaScript-Variable
+with open("meta.js", "w", encoding="utf-8") as f:
+    f.write(f'const standDaten = "{date_str}";')
+
+print(f"📅 Datums-Stempel erstellt: {date_str}")        
