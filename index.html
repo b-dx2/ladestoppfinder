@@ -233,23 +233,15 @@
                 <span id="theme-btn-text">Dunkler Modus</span> <span>☀️/🌙</span>
             </button>
 
-            <!-- 1. Das vom Scraper erstellte Datum laden -->
-            <script src="meta.js"></script>
-
-
             <h2>Hintergrund</h2>
             <p>Wer kennt das nicht: Man sitzt im Auto, weiß man muss eh noch laden und würde das gern mit einem kurzen Snack verbinden. Aber wo? "Charge and eat" bietet die Lösung.</p>
             <p>Die Datenbank wird regelmäßig aktualisiert.<br>
-                <span style="color: var(--charger-color); font-weight: bold;">Aktueller Stand: 
-                    <!-- 2. Den Text in das HTML-Element schreiben -->
-                    <script>
-                        if (typeof standDaten !== 'undefined') {
-                            document.getElementById('datum-anzeige').innerText = standDaten;
-                        }
-                    </script>
-                </span></p>
+                <span style="color: var(--charger-color); font-weight: bold;">
+                    Aktueller Stand: <span id="datum-anzeige">wird geladen...</span>
+                </span>
+            </p>
             <p>Feature Request? <a href="mailto:contact@chargeandeat.de?subject=Featurerequest">contact@chargeandeat.de</a>.</p>
-
+            
             <h2>Datenschutz & Co.</h2>
             <p>
                 <strong>🍪 Cookies:</strong> Essen wir am liebsten selber. Daher verwendet diese Seite keine Tracking-Cookies und speichert keine persönlichen Daten auf unseren Servern. 
@@ -576,6 +568,18 @@
             foodWheel.spinToId('all', 3000);
         }, 500);
     });
+    </script>
+
+    <script src="meta.js"></script>
+
+    <script>
+        // Wir prüfen kurz, ob die Datei meta.js erfolgreich geladen wurde
+        if (typeof standDaten !== 'undefined') {
+            const anzeigeElement = document.getElementById('datum-anzeige');
+            if (anzeigeElement) {
+                anzeigeElement.innerText = standDaten;
+            }
+        }
     </script>
 </body>
 </html>

@@ -3,6 +3,8 @@ import json
 import math
 import time
 import datetime
+import os
+
 
 # --- KONFIGURATION DEUTSCHLAND ---
 
@@ -225,20 +227,18 @@ while current_lat < LAT_END:
     
     current_lat += STEP_SIZE
 
+# --- ZEITMESSUNG & ABSCHLUSS ---
 end_total_time = time.time()
 total_duration = end_total_time - start_total_time
 m = int(total_duration // 60)
 s = int(total_duration % 60)
 
 print(f"\n✅ FERTIG in {m}m {s}s!")
-print(f"💾 Speichere {len(all_matches)} Orte in {OUTPUT_FILENAME}...")
 
-# with open(OUTPUT_FILENAME, 'w', encoding='utf-8') as f:
-#     json.dump(all_matches, f, ensure_ascii=False, indent=2)
+# WICHTIG: Wir nutzen 'all_matches' aus deinem Skript
+data_to_save = all_matches 
 
-# --- DAS KOMMT GANZ ANS ENDE DES SKRIPTS ---
-
-# 1. Alte Datei lesen (für den Vergleich)
+# 1. Alte Datei prüfen (für den Vergleich: Alt vs Neu)
 old_count = 0
 if os.path.exists(OUTPUT_FILENAME):
     try:
@@ -246,22 +246,33 @@ if os.path.exists(OUTPUT_FILENAME):
             old_data = json.load(f)
             old_count = len(old_data)
     except:
-        pass # Datei existierte wohl noch nicht
+        pass # Datei existierte wohl noch nicht oder war leer
 
-new_count = len(merged_data)
+new_count = len(data_to_save)
 diff = new_count - old_count
 
 print(f"------------------------------------------------")
-print(f"✅ FERTIG! Alt: {old_count} -> Neu: {new_count} (Diff: {diff:+d})")
-print(f"Speichere in {OUTPUT_FILENAME}...")
+print(f"📊 Statistik: Alt: {old_count} -> Neu: {new_count} (Diff: {diff:+d})")
+print(f"💾 Speichere in {OUTPUT_FILENAME}...")
 
+# 2. Speichern der JSON-Datei (Die Hauptdatenbank)
 with open(OUTPUT_FILENAME, 'w', encoding='utf-8') as f:
-    json.dump(merged_data, f, ensure_ascii=False, indent=2)
+    json.dump(data_to_save, f, ensure_ascii=False, indent=2)
 
-# 2. GitHub Actions Integration
-# Das hier wird nur ausgeführt, wenn das Skript auf GitHub läuft
+# 3. meta.js erstellen (für das Datum auf der Webseite)
+now = datetime.datetime.now()
+monate = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
+# Format: Monat Jahr (z.B. "Mai 2024")
+date_str = f"{monate[now.month-1]} {now.year}"
+
+with open("meta.js", "w", encoding="utf-8") as f:
+    f.write(f'const standDaten = "{date_str}";')
+
+print(f"📅 'meta.js' aktualisiert: {date_str}")
+
+# 4. GitHub Actions Integration
+# Das hier wird nur ausgeführt, wenn das Skript auf dem GitHub-Server läuft
 if "GITHUB_STEP_SUMMARY" in os.environ:
-    # A. Schöne Übersicht auf der "Actions"-Startseite erstellen
     with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
         f.write("# 🗺️ Karten-Update Report\n")
         f.write(f"Das monatliche Update war erfolgreich.\n\n")
@@ -271,18 +282,5 @@ if "GITHUB_STEP_SUMMARY" in os.environ:
         f.write(f"| 📊 Differenz | **{diff:+d}** |\n")
 
 if "GITHUB_OUTPUT" in os.environ:
-    # B. Daten an den nächsten Schritt im Workflow übergeben (für die Commit-Message)
     with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
         f.write(f"stats_msg={new_count} Einträge ({diff:+d})\n")
-        
-# --- NEU: Datum für die Webseite speichern ---
-now = datetime.datetime.now()
-monate = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
-# Format: Monat Jahr (z.B. "Mai 2024")
-date_str = f"{monate[now.month-1]} {now.year}"
-
-# Wir speichern das als kleine JavaScript-Variable
-with open("meta.js", "w", encoding="utf-8") as f:
-    f.write(f'const standDaten = "{date_str}";')
-
-print(f"📅 Datums-Stempel erstellt: {date_str}")        
