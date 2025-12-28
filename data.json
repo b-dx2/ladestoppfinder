@@ -12930,96 +12930,6 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego Charging Station</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 73m</div>"
   },
   {
-    "lat": 51.3797847,
-    "lon": 5.9847913,
-    "charger_id": "allego",
-    "food_id": "kfc",
-    "title": "Allego + KFC",
-    "badge_class": "bg-allego",
-    "note": "21m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>KFC</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 21m</div>"
-  },
-  {
-    "lat": 51.3800462,
-    "lon": 5.9855815,
-    "charger_id": "ionity",
-    "food_id": "kfc",
-    "title": "Ionity Sevenum + KFC",
-    "badge_class": "bg-ionity",
-    "note": "66m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Ionity Sevenum</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>KFC</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 66m</div>"
-  },
-  {
-    "lat": 51.2551075,
-    "lon": 5.7667479,
-    "charger_id": "allego",
-    "food_id": "burger king",
-    "title": "Allego + Burger King",
-    "badge_class": "bg-allego",
-    "note": "36m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 36m</div>"
-  },
-  {
-    "lat": 51.2546052,
-    "lon": 5.7651129,
-    "charger_id": "allego",
-    "food_id": "burger king",
-    "title": "Allego + Burger King",
-    "badge_class": "bg-allego",
-    "note": "160m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 160m</div>"
-  },
-  {
-    "lat": 51.254718,
-    "lon": 5.7687298,
-    "charger_id": "fastned",
-    "food_id": "burger king",
-    "title": "Fastned Het Anker + Burger King",
-    "badge_class": "bg-fastned",
-    "note": "110m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Fastned Het Anker</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 110m</div>"
-  },
-  {
-    "lat": 51.3764493,
-    "lon": 5.9853953,
-    "charger_id": "fastned",
-    "food_id": "mcdonald",
-    "title": "Fastned Het Anker + McDonald's",
-    "badge_class": "bg-fastned",
-    "note": "38m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Fastned Het Anker</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 38m</div>"
-  },
-  {
-    "lat": 51.4805038,
-    "lon": 5.659912,
-    "charger_id": "allego",
-    "food_id": "subway",
-    "title": "Allego + Subway",
-    "badge_class": "bg-allego",
-    "note": "211m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 211m</div>"
-  },
-  {
-    "lat": 51.4781624,
-    "lon": 5.65885,
-    "charger_id": "allego",
-    "food_id": "subway",
-    "title": "Allego + Subway",
-    "badge_class": "bg-allego",
-    "note": "118m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 118m</div>"
-  },
-  {
-    "lat": 51.4783244,
-    "lon": 5.6582129,
-    "charger_id": "allego",
-    "food_id": "subway",
-    "title": "Allego + Subway",
-    "badge_class": "bg-allego",
-    "note": "84m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 84m</div>"
-  },
-  {
     "lat": 51.3288378,
     "lon": 6.1957135,
     "charger_id": "aral",
@@ -13134,10 +13044,10 @@
     "lon": 6.4126853,
     "charger_id": "ionity",
     "food_id": "burger king",
-    "title": "Ionity Sevenum + Burger King",
+    "title": "IONITY Turnov + Burger King",
     "badge_class": "bg-ionity",
     "note": "236m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Ionity Sevenum</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 236m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY Turnov</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 236m</div>"
   },
   {
     "lat": 51.1574539,
@@ -13154,20 +13064,20 @@
     "lon": 6.9291493,
     "charger_id": "allego",
     "food_id": "burger king",
-    "title": "Allego + Burger King",
+    "title": "Allego Charging Station + Burger King",
     "badge_class": "bg-allego",
     "note": "249m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 249m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego Charging Station</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 249m</div>"
   },
   {
     "lat": 51.3631392,
     "lon": 6.9402383,
     "charger_id": "allego",
     "food_id": "lounge",
-    "title": "Allego + Rewe To Go",
+    "title": "Allego Charging Station + Rewe To Go",
     "badge_class": "bg-allego",
     "note": "294m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Rewe To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 294m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego Charging Station</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Rewe To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 294m</div>"
   },
   {
     "lat": 51.183559,
@@ -13450,256 +13360,6 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral pulse Ladestation</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE to Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 9m</div>"
   },
   {
-    "lat": 51.1583259,
-    "lon": 7.2303511,
-    "charger_id": "ionity",
-    "food_id": "mcdonald",
-    "title": "IONITY D&W + McDonald's",
-    "badge_class": "bg-ionity",
-    "note": "170m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY D&W</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 170m</div>"
-  },
-  {
-    "lat": 51.1583471,
-    "lon": 7.2303142,
-    "charger_id": "ionity",
-    "food_id": "mcdonald",
-    "title": "IONITY D&W + McDonald's",
-    "badge_class": "bg-ionity",
-    "note": "168m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY D&W</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 168m</div>"
-  },
-  {
-    "lat": 51.158369,
-    "lon": 7.2302728,
-    "charger_id": "ionity",
-    "food_id": "mcdonald",
-    "title": "IONITY D&W + McDonald's",
-    "badge_class": "bg-ionity",
-    "note": "166m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY D&W</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 166m</div>"
-  },
-  {
-    "lat": 51.1583921,
-    "lon": 7.2302291,
-    "charger_id": "ionity",
-    "food_id": "mcdonald",
-    "title": "IONITY D&W + McDonald's",
-    "badge_class": "bg-ionity",
-    "note": "165m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY D&W</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 165m</div>"
-  },
-  {
-    "lat": 51.4646115,
-    "lon": 7.009217,
-    "charger_id": "allego",
-    "food_id": "subway",
-    "title": "Schnellladestation Handelshof Essen + Subway",
-    "badge_class": "bg-allego",
-    "note": "57m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation Handelshof Essen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 57m</div>"
-  },
-  {
-    "lat": 51.2686258,
-    "lon": 7.12661,
-    "charger_id": "aral",
-    "food_id": "lounge",
-    "title": "Aral Tankstelle Rastplatz Beverbach + REWE To Go",
-    "badge_class": "bg-aral",
-    "note": "37m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Tankstelle Rastplatz Beverbach</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 37m</div>"
-  },
-  {
-    "lat": 51.4740862,
-    "lon": 7.1514529,
-    "charger_id": "ionity",
-    "food_id": "mcdonald",
-    "title": "IONITY D&W + McDonald's",
-    "badge_class": "bg-ionity",
-    "note": "164m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY D&W</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 164m</div>"
-  },
-  {
-    "lat": 51.4962762,
-    "lon": 7.0077478,
-    "charger_id": "allego",
-    "food_id": "nordsee",
-    "title": "Schnellladestation Handelshof Essen + Nordsee",
-    "badge_class": "bg-allego",
-    "note": "81m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation Handelshof Essen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Nordsee</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 81m</div>"
-  },
-  {
-    "lat": 51.4962762,
-    "lon": 7.0077478,
-    "charger_id": "allego",
-    "food_id": "subway",
-    "title": "Schnellladestation Handelshof Essen + Subway",
-    "badge_class": "bg-allego",
-    "note": "100m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation Handelshof Essen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 100m</div>"
-  },
-  {
-    "lat": 51.4523286,
-    "lon": 7.0137244,
-    "charger_id": "allego",
-    "food_id": "subway",
-    "title": "Schnellladestation Handelshof Essen + Subway",
-    "badge_class": "bg-allego",
-    "note": "57m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation Handelshof Essen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 57m</div>"
-  },
-  {
-    "lat": 51.4523286,
-    "lon": 7.0137244,
-    "charger_id": "allego",
-    "food_id": "nordsee",
-    "title": "Schnellladestation Handelshof Essen + Nordsee",
-    "badge_class": "bg-allego",
-    "note": "118m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation Handelshof Essen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Nordsee</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 118m</div>"
-  },
-  {
-    "lat": 51.4523286,
-    "lon": 7.0137244,
-    "charger_id": "allego",
-    "food_id": "mcdonald",
-    "title": "Schnellladestation Handelshof Essen + McDonald's",
-    "badge_class": "bg-allego",
-    "note": "65m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation Handelshof Essen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 65m</div>"
-  },
-  {
-    "lat": 51.4523286,
-    "lon": 7.0137244,
-    "charger_id": "allego",
-    "food_id": "lounge",
-    "title": "Schnellladestation Handelshof Essen + DB Lounge",
-    "badge_class": "bg-allego",
-    "note": "179m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation Handelshof Essen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>DB Lounge</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 179m</div>"
-  },
-  {
-    "lat": 51.3874294,
-    "lon": 7.0013212,
-    "charger_id": "allego",
-    "food_id": "lounge",
-    "title": "Schnellladestation Handelshof Essen + Krümel Lounge",
-    "badge_class": "bg-allego",
-    "note": "84m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation Handelshof Essen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Krümel Lounge</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 84m</div>"
-  },
-  {
-    "lat": 51.4951659,
-    "lon": 7.2847692,
-    "charger_id": "tesla",
-    "food_id": "nordsee",
-    "title": "Wuppertal Supercharger + Nordsee",
-    "badge_class": "bg-tesla",
-    "note": "122m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Wuppertal Supercharger</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Nordsee</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 122m</div>"
-  },
-  {
-    "lat": 51.2824734,
-    "lon": 7.2561613,
-    "charger_id": "tesla",
-    "food_id": "kfc",
-    "title": "Wuppertal Supercharger + KFC",
-    "badge_class": "bg-tesla",
-    "note": "66m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Wuppertal Supercharger</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>KFC</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 66m</div>"
-  },
-  {
-    "lat": 51.3408692,
-    "lon": 7.2902639,
-    "charger_id": "aral",
-    "food_id": "lounge",
-    "title": "Aral Tankstelle Rastplatz Beverbach + REWE to go",
-    "badge_class": "bg-aral",
-    "note": "70m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Tankstelle Rastplatz Beverbach</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE to go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 70m</div>"
-  },
-  {
-    "lat": 51.4351348,
-    "lon": 7.0337865,
-    "charger_id": "aral",
-    "food_id": "lounge",
-    "title": "Aral Tankstelle Rastplatz Beverbach + REWE To Go",
-    "badge_class": "bg-aral",
-    "note": "46m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Tankstelle Rastplatz Beverbach</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 46m</div>"
-  },
-  {
-    "lat": 51.4351022,
-    "lon": 7.033695,
-    "charger_id": "aral",
-    "food_id": "lounge",
-    "title": "Aral Tankstelle Rastplatz Beverbach + REWE To Go",
-    "badge_class": "bg-aral",
-    "note": "45m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Tankstelle Rastplatz Beverbach</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 45m</div>"
-  },
-  {
-    "lat": 51.4350743,
-    "lon": 7.0336044,
-    "charger_id": "aral",
-    "food_id": "lounge",
-    "title": "Aral Tankstelle Rastplatz Beverbach + REWE To Go",
-    "badge_class": "bg-aral",
-    "note": "46m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Tankstelle Rastplatz Beverbach</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 46m</div>"
-  },
-  {
-    "lat": 51.4612041,
-    "lon": 7.2208449,
-    "charger_id": "aral",
-    "food_id": "lounge",
-    "title": "Aral Tankstelle Rastplatz Beverbach + REWE To Go",
-    "badge_class": "bg-aral",
-    "note": "21m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Tankstelle Rastplatz Beverbach</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 21m</div>"
-  },
-  {
-    "lat": 51.2855116,
-    "lon": 7.0468196,
-    "charger_id": "aral",
-    "food_id": "lounge",
-    "title": "Aral Tankstelle Rastplatz Beverbach + REWE To Go",
-    "badge_class": "bg-aral",
-    "note": "44m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Tankstelle Rastplatz Beverbach</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 44m</div>"
-  },
-  {
-    "lat": 51.4949739,
-    "lon": 7.2850188,
-    "charger_id": "tesla",
-    "food_id": "nordsee",
-    "title": "Wuppertal Supercharger + Nordsee",
-    "badge_class": "bg-tesla",
-    "note": "146m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Wuppertal Supercharger</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Nordsee</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 146m</div>"
-  },
-  {
-    "lat": 51.265585,
-    "lon": 7.2451926,
-    "charger_id": "enbw",
-    "food_id": "mcdonald",
-    "title": "Schnellladestation Hellweg Dortmund-Kley + McDonald's",
-    "badge_class": "bg-enbw",
-    "note": "137m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation Hellweg Dortmund-Kley</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 137m</div>"
-  },
-  {
-    "lat": 51.3850865,
-    "lon": 7.451669,
-    "charger_id": "enbw",
-    "food_id": "kfc",
-    "title": "Schnellladestation Hellweg Dortmund-Kley + KFC",
-    "badge_class": "bg-enbw",
-    "note": "235m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation Hellweg Dortmund-Kley</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>KFC</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 235m</div>"
-  },
-  {
     "lat": 51.4683347,
     "lon": 7.5939481,
     "charger_id": "ionity",
@@ -13800,146 +13460,6 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 41m</div>"
   },
   {
-    "lat": 51.0872282,
-    "lon": 9.4851045,
-    "charger_id": "tesla",
-    "food_id": "burger king",
-    "title": "Kassel Galeria Supercharger + Burger King",
-    "badge_class": "bg-tesla",
-    "note": "63m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Kassel Galeria Supercharger</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 63m</div>"
-  },
-  {
-    "lat": 51.2025851,
-    "lon": 9.4685988,
-    "charger_id": "tesla",
-    "food_id": "mcdonald",
-    "title": "Kassel Galeria Supercharger + McDonald's",
-    "badge_class": "bg-tesla",
-    "note": "63m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Kassel Galeria Supercharger</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 63m</div>"
-  },
-  {
-    "lat": 51.2025851,
-    "lon": 9.4685988,
-    "charger_id": "tesla",
-    "food_id": "kfc",
-    "title": "Kassel Galeria Supercharger + KFC",
-    "badge_class": "bg-tesla",
-    "note": "153m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Kassel Galeria Supercharger</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>KFC</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 153m</div>"
-  },
-  {
-    "lat": 51.0868589,
-    "lon": 9.485491,
-    "charger_id": "allego",
-    "food_id": "burger king",
-    "title": "Allego + Burger King",
-    "badge_class": "bg-allego",
-    "note": "95m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 95m</div>"
-  },
-  {
-    "lat": 51.4026327,
-    "lon": 9.1868328,
-    "charger_id": "allego",
-    "food_id": "burger king",
-    "title": "Allego + Burger King",
-    "badge_class": "bg-allego",
-    "note": "35m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 35m</div>"
-  },
-  {
-    "lat": 51.3135896,
-    "lon": 9.4938451,
-    "charger_id": "tesla",
-    "food_id": "nordsee",
-    "title": "Kassel Galeria Supercharger + Nordsee",
-    "badge_class": "bg-tesla",
-    "note": "151m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Kassel Galeria Supercharger</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Nordsee</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 151m</div>"
-  },
-  {
-    "lat": 51.004601,
-    "lon": 9.479521,
-    "charger_id": "allego",
-    "food_id": "subway",
-    "title": "Allego + Subway",
-    "badge_class": "bg-allego",
-    "note": "46m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 46m</div>"
-  },
-  {
-    "lat": 51.4019712,
-    "lon": 9.1842675,
-    "charger_id": "ionity",
-    "food_id": "burger king",
-    "title": "Schnellladestation Lichtendorf Süd + Burger King",
-    "badge_class": "bg-ionity",
-    "note": "196m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation Lichtendorf Süd</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 196m</div>"
-  },
-  {
-    "lat": 51.0052502,
-    "lon": 9.4814736,
-    "charger_id": "ionity",
-    "food_id": "subway",
-    "title": "Schnellladestation Lichtendorf Süd + Subway",
-    "badge_class": "bg-ionity",
-    "note": "124m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation Lichtendorf Süd</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 124m</div>"
-  },
-  {
-    "lat": 51.289002,
-    "lon": 9.4752137,
-    "charger_id": "allego",
-    "food_id": "nordsee",
-    "title": "Allego + Nordsee",
-    "badge_class": "bg-allego",
-    "note": "196m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Nordsee</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 196m</div>"
-  },
-  {
-    "lat": 51.289002,
-    "lon": 9.4752137,
-    "charger_id": "allego",
-    "food_id": "burger king",
-    "title": "Allego + Burger King",
-    "badge_class": "bg-allego",
-    "note": "116m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 116m</div>"
-  },
-  {
-    "lat": 51.2034682,
-    "lon": 9.4686186,
-    "charger_id": "allego",
-    "food_id": "mcdonald",
-    "title": "Allego + McDonald's",
-    "badge_class": "bg-allego",
-    "note": "159m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 159m</div>"
-  },
-  {
-    "lat": 51.2034682,
-    "lon": 9.4686186,
-    "charger_id": "allego",
-    "food_id": "kfc",
-    "title": "Allego + KFC",
-    "badge_class": "bg-allego",
-    "note": "62m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>KFC</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 62m</div>"
-  },
-  {
-    "lat": 51.4884167,
-    "lon": 9.0057703,
-    "charger_id": "enbw",
-    "food_id": "mcdonald",
-    "title": "EnBW Schnellladepark Diemelstadt + McDonald's",
-    "badge_class": "bg-enbw",
-    "note": "117m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Schnellladepark Diemelstadt</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 117m</div>"
-  },
-  {
     "lat": 51.3702578,
     "lon": 9.633842,
     "charger_id": "tesla",
@@ -13964,10 +13484,10 @@
     "lon": 9.8762648,
     "charger_id": "enbw",
     "food_id": "burger king",
-    "title": "EnBW Schnellladepark Diemelstadt + Burger King",
+    "title": "EnBW + Burger King",
     "badge_class": "bg-enbw",
     "note": "91m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Schnellladepark Diemelstadt</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 91m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 91m</div>"
   },
   {
     "lat": 51.3703782,
@@ -13994,10 +13514,10 @@
     "lon": 9.7463692,
     "charger_id": "aral",
     "food_id": "mcdonald",
-    "title": "Aral Pulse Tankstelle + McDonald's",
+    "title": "AralPulse Ladestation + McDonald's",
     "badge_class": "bg-aral",
     "note": "81m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Pulse Tankstelle</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 81m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>AralPulse Ladestation</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 81m</div>"
   },
   {
     "lat": 51.1977974,
@@ -14144,40 +13664,40 @@
     "lon": 11.9054769,
     "charger_id": "aral",
     "food_id": "lounge",
-    "title": "Aral Pulse Tankstelle + REWE To Go",
+    "title": "AralPulse Ladestation + REWE To Go",
     "badge_class": "bg-aral",
     "note": "35m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Pulse Tankstelle</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 35m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>AralPulse Ladestation</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 35m</div>"
   },
   {
     "lat": 51.0398296,
     "lon": 11.5115815,
     "charger_id": "aral",
     "food_id": "lounge",
-    "title": "Aral Pulse Tankstelle + REWE To Go",
+    "title": "AralPulse Ladestation + REWE To Go",
     "badge_class": "bg-aral",
     "note": "12m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Pulse Tankstelle</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 12m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>AralPulse Ladestation</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 12m</div>"
   },
   {
     "lat": 51.4974014,
     "lon": 11.9819661,
     "charger_id": "aral",
     "food_id": "lounge",
-    "title": "Aral Pulse Tankstelle + REWE To Go",
+    "title": "AralPulse Ladestation + REWE To Go",
     "badge_class": "bg-aral",
     "note": "55m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Pulse Tankstelle</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 55m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>AralPulse Ladestation</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 55m</div>"
   },
   {
     "lat": 51.4974841,
     "lon": 11.9823826,
     "charger_id": "aral",
     "food_id": "lounge",
-    "title": "Aral Pulse Tankstelle + REWE To Go",
+    "title": "AralPulse Ladestation + REWE To Go",
     "badge_class": "bg-aral",
     "note": "44m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Pulse Tankstelle</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 44m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>AralPulse Ladestation</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 44m</div>"
   },
   {
     "lat": 51.3995699,
@@ -15170,146 +14690,6 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW HyperNetz</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 39m</div>"
   },
   {
-    "lat": 51.570256,
-    "lon": 7.6751506,
-    "charger_id": "tesla",
-    "food_id": "burger king",
-    "title": "Münster Supercharger + Burger King",
-    "badge_class": "bg-tesla",
-    "note": "62m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Münster Supercharger</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 62m</div>"
-  },
-  {
-    "lat": 51.570256,
-    "lon": 7.6751506,
-    "charger_id": "tesla",
-    "food_id": "mcdonald",
-    "title": "Münster Supercharger + McDonald's",
-    "badge_class": "bg-tesla",
-    "note": "162m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Münster Supercharger</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 162m</div>"
-  },
-  {
-    "lat": 51.570256,
-    "lon": 7.6751506,
-    "charger_id": "tesla",
-    "food_id": "kfc",
-    "title": "Münster Supercharger + KFC",
-    "badge_class": "bg-tesla",
-    "note": "200m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Münster Supercharger</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>KFC</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 200m</div>"
-  },
-  {
-    "lat": 51.5699536,
-    "lon": 7.6730507,
-    "charger_id": "allego",
-    "food_id": "burger king",
-    "title": "Schnellladestation A.T.U Kamen Karree 5 I (Kamen) + Burger King",
-    "badge_class": "bg-allego",
-    "note": "135m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Kamen Karree 5 I (Kamen)</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 135m</div>"
-  },
-  {
-    "lat": 51.5699536,
-    "lon": 7.6730507,
-    "charger_id": "allego",
-    "food_id": "mcdonald",
-    "title": "Schnellladestation A.T.U Kamen Karree 5 I (Kamen) + McDonald's",
-    "badge_class": "bg-allego",
-    "note": "87m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Kamen Karree 5 I (Kamen)</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 87m</div>"
-  },
-  {
-    "lat": 51.5699536,
-    "lon": 7.6730507,
-    "charger_id": "allego",
-    "food_id": "kfc",
-    "title": "Schnellladestation A.T.U Kamen Karree 5 I (Kamen) + KFC",
-    "badge_class": "bg-allego",
-    "note": "187m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Kamen Karree 5 I (Kamen)</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>KFC</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 187m</div>"
-  },
-  {
-    "lat": 51.567174,
-    "lon": 7.6745847,
-    "charger_id": "enbw",
-    "food_id": "burger king",
-    "title": "EnBW HyperNetz + Burger King",
-    "badge_class": "bg-enbw",
-    "note": "282m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW HyperNetz</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 282m</div>"
-  },
-  {
-    "lat": 51.567174,
-    "lon": 7.6745847,
-    "charger_id": "enbw",
-    "food_id": "mcdonald",
-    "title": "EnBW HyperNetz + McDonald's",
-    "badge_class": "bg-enbw",
-    "note": "239m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW HyperNetz</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 239m</div>"
-  },
-  {
-    "lat": 51.567174,
-    "lon": 7.6745847,
-    "charger_id": "enbw",
-    "food_id": "kfc",
-    "title": "EnBW HyperNetz + KFC",
-    "badge_class": "bg-enbw",
-    "note": "148m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW HyperNetz</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>KFC</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 148m</div>"
-  },
-  {
-    "lat": 51.567174,
-    "lon": 7.6745847,
-    "charger_id": "enbw",
-    "food_id": "lounge",
-    "title": "EnBW HyperNetz + REWE ready",
-    "badge_class": "bg-enbw",
-    "note": "37m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW HyperNetz</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE ready</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 37m</div>"
-  },
-  {
-    "lat": 51.6954636,
-    "lon": 7.9671806,
-    "charger_id": "tesla",
-    "food_id": "mcdonald",
-    "title": "Münster Supercharger + McDonald's",
-    "badge_class": "bg-tesla",
-    "note": "143m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Münster Supercharger</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 143m</div>"
-  },
-  {
-    "lat": 51.6172031,
-    "lon": 7.8486034,
-    "charger_id": "aral",
-    "food_id": "lounge",
-    "title": "Aral Pulse + REWE To Go",
-    "badge_class": "bg-aral",
-    "note": "58m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Pulse</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 58m</div>"
-  },
-  {
-    "lat": 51.6171976,
-    "lon": 7.8485075,
-    "charger_id": "aral",
-    "food_id": "lounge",
-    "title": "Aral Pulse + REWE To Go",
-    "badge_class": "bg-aral",
-    "note": "61m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Pulse</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 61m</div>"
-  },
-  {
-    "lat": 51.7651616,
-    "lon": 7.9121009,
-    "charger_id": "aral",
-    "food_id": "mcdonald",
-    "title": "Aral Pulse + McDonald's",
-    "badge_class": "bg-aral",
-    "note": "53m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Pulse</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 53m</div>"
-  },
-  {
     "lat": 51.5935703,
     "lon": 8.487392,
     "charger_id": "enbw",
@@ -15814,10 +15194,10 @@
     "lon": 8.5913327,
     "charger_id": "allego",
     "food_id": "mcdonald",
-    "title": "Schnellladestation A.T.U Kamen Karree 5 I (Kamen) + McDonald's",
+    "title": "Schnellladestation A.T.U Recklinghausen + McDonald's",
     "badge_class": "bg-allego",
     "note": "148m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Kamen Karree 5 I (Kamen)</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 148m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Recklinghausen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 148m</div>"
   },
   {
     "lat": 51.5983104,
@@ -16074,20 +15454,20 @@
     "lon": 9.928077,
     "charger_id": "allego",
     "food_id": "subway",
-    "title": "Schnellladestation A.T.U Kamen Karree 5 I (Kamen) + Subway",
+    "title": "Schnellladestation A.T.U Recklinghausen + Subway",
     "badge_class": "bg-allego",
     "note": "137m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Kamen Karree 5 I (Kamen)</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 137m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Recklinghausen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 137m</div>"
   },
   {
     "lat": 51.5366918,
     "lon": 9.928077,
     "charger_id": "allego",
     "food_id": "burger king",
-    "title": "Schnellladestation A.T.U Kamen Karree 5 I (Kamen) + Burger King",
+    "title": "Schnellladestation A.T.U Recklinghausen + Burger King",
     "badge_class": "bg-allego",
     "note": "104m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Kamen Karree 5 I (Kamen)</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 104m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Recklinghausen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 104m</div>"
   },
   {
     "lat": 51.7322438,
@@ -16234,30 +15614,30 @@
     "lon": 10.1407603,
     "charger_id": "allego",
     "food_id": "mcdonald",
-    "title": "Schnellladestation A.T.U Kamen Karree 5 I (Kamen) + McDonald's",
+    "title": "Schnellladestation A.T.U Recklinghausen + McDonald's",
     "badge_class": "bg-allego",
     "note": "160m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Kamen Karree 5 I (Kamen)</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 160m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Recklinghausen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 160m</div>"
   },
   {
     "lat": 51.9472371,
     "lon": 10.1407733,
     "charger_id": "allego",
     "food_id": "mcdonald",
-    "title": "Schnellladestation A.T.U Kamen Karree 5 I (Kamen) + McDonald's",
+    "title": "Schnellladestation A.T.U Recklinghausen + McDonald's",
     "badge_class": "bg-allego",
     "note": "160m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Kamen Karree 5 I (Kamen)</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 160m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Recklinghausen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 160m</div>"
   },
   {
     "lat": 51.9473003,
     "lon": 10.1407461,
     "charger_id": "allego",
     "food_id": "mcdonald",
-    "title": "Schnellladestation A.T.U Kamen Karree 5 I (Kamen) + McDonald's",
+    "title": "Schnellladestation A.T.U Recklinghausen + McDonald's",
     "badge_class": "bg-allego",
     "note": "160m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Kamen Karree 5 I (Kamen)</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 160m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Recklinghausen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 160m</div>"
   },
   {
     "lat": 51.9264392,
@@ -16494,20 +15874,20 @@
     "lon": 10.4096638,
     "charger_id": "allego",
     "food_id": "mcdonald",
-    "title": "Schnellladestation A.T.U Kamen Karree 5 I (Kamen) + McDonald's",
+    "title": "Schnellladestation A.T.U Recklinghausen + McDonald's",
     "badge_class": "bg-allego",
     "note": "152m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Kamen Karree 5 I (Kamen)</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 152m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Recklinghausen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 152m</div>"
   },
   {
     "lat": 51.9317313,
     "lon": 10.4096638,
     "charger_id": "allego",
     "food_id": "burger king",
-    "title": "Schnellladestation A.T.U Kamen Karree 5 I (Kamen) + Burger King",
+    "title": "Schnellladestation A.T.U Recklinghausen + Burger King",
     "badge_class": "bg-allego",
     "note": "79m zu Fuß",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Kamen Karree 5 I (Kamen)</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 79m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Schnellladestation A.T.U Recklinghausen</div><div style='display:flex; align-items:center; gap:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: 79m</div>"
   },
   {
     "lat": 51.7642002,

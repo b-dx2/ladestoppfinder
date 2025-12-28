@@ -1,1 +1,1 @@
-const standDaten = "01 2026";
+const standDaten = "Dezember 2025";
