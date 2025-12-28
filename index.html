@@ -2,9 +2,9 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charge and Eat - Ladestoppfinder Deutschland - Laden und Essen – Tesla, IONITY, EnBW, McDonald's, Burger King</title>
-    <meta name="description" content="Finde Ladestopps für Elektroautos in Deutschland. Entdecke Tesla Supercharger, IONITY und EnBW Ladestationen mit Restaurants wie McDonald's und Burger King. Plane deine Pause an der Autobahn für HPC-Laden und FastFood."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Charge and Eat - Ladestoppfinder Deutschland - Laden und Essen</title>
+    <meta name="description" content="Finde Ladestopps für Elektroautos in Deutschland. Entdecke Tesla Supercharger, IONITY und EnBW Ladestationen mit Restaurants wie McDonald's und Burger King."/>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -18,24 +18,21 @@
     <style>
         /* --- CSS VARIABLES & THEMES --- */
         :root {
-            /* Default: Dark Mode */
             --bg-color: #121212;
             --header-bg: #1e1e1e;
-            --sidebar-bg: #1e1e1e; /* Hintergrund für das Menü */
+            --sidebar-bg: #1e1e1e;
             --text-color: #ffffff;
             --muted-text: #b0b0b0;
             --card-bg: #2c2c2c;
             
-            /* Picker Colors */
             --picker-bg: #333;
             --picker-highlight: rgba(255, 255, 255, 0.1);
-            --charger-color: #64b5f6; /* Hellblau */
-            --food-color: #ffb74d;    /* Orange */
+            --charger-color: #64b5f6;
+            --food-color: #ffb74d;
             --btn-border: #555;
             --shadow-color: rgba(0,0,0,0.5);
         }
         
-        /* Light Mode Klasse */
         body.light-mode {
             --bg-color: #f5f5f5;
             --header-bg: #ffffff;
@@ -54,16 +51,15 @@
 
         /* --- BASIC SETUP --- */
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            overflow: hidden;
+            display: flex; flex-direction: column;
+            height: 100vh; overflow: hidden;
             transition: background-color 0.3s, color 0.3s;
+            /* Verhindert Pull-to-Refresh auf Mobile */
+            overscroll-behavior-y: none; 
         }
 
         header {
@@ -71,185 +67,96 @@
             padding: 0.5rem 1rem 0 1rem;
             box-shadow: 0 4px 10px var(--shadow-color);
             z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: flex; flex-direction: column; align-items: center;
             position: relative;
         }
 
-        h1 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-align: center;
-        }
-        
-        h2 {
-            margin: 1.5rem 0 0.5rem 0;
-            font-size: 1.3rem;
-            border-bottom: 2px solid var(--charger-color);
-            padding-bottom: 5px;
-            display: inline-block;
-        }
-
-        h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1rem;
-        }
-
-        p {
-            line-height: 1.5;
-            color: var(--muted-text);
-            margin-bottom: 1rem;
-        }
+        h1 { margin: 0 0 0.5rem 0; font-size: 1.2rem; font-weight: 700; text-align: center; }
+        h2 { margin: 1.5rem 0 0.5rem 0; font-size: 1.3rem; border-bottom: 2px solid var(--charger-color); padding-bottom: 5px; display: inline-block; }
+        h3 { margin: 0 0 0.5rem 0; font-size: 1rem; }
+        p { line-height: 1.5; color: var(--muted-text); margin-bottom: 1rem; }
 
         /* --- MENU BUTTON --- */
         .menu-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            cursor: pointer;
-            background: transparent;
-            font-size: 1.8rem;
-            color: var(--text-color);
-            user-select: none;
-            z-index: 1100;
-            padding: 5px;
+            position: absolute; top: 1rem; right: 1.5rem;
+            cursor: pointer; font-size: 1.8rem; color: var(--text-color);
+            user-select: none; z-index: 1100; padding: 5px;
         }
-        
-        .menu-btn:hover {
-            opacity: 0.7;
-        }
+        .menu-btn:hover { opacity: 0.7; }
 
-        /* --- SIDEBAR MENU OVERLAY (1/3 Width) --- */
+        /* --- SIDEBAR MENU --- */
         .menu-overlay {
-            position: fixed;
-            top: 0; 
-            right: 0;  /* Rechts ausgerichtet */
-            bottom: 0;
-            /* Desktop: 33%, aber mind. 350px damit Text passt */
-            width: 33%; 
-            min-width: 350px;
-            
-            background-color: var(--sidebar-bg); /* Solider Hintergrund */
+            position: fixed; top: 0; right: 0; bottom: 0;
+            width: 33%; min-width: 350px;
+            background-color: var(--sidebar-bg);
             z-index: 2000;
-            display: flex;
-            flex-direction: column;
-            padding: 2rem;
-            box-sizing: border-box;
-            
-            /* Animation: Slide In von rechts */
+            display: flex; flex-direction: column;
+            padding: 2rem; box-sizing: border-box;
             transform: translateX(100%);
             transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-            
-            /* Schatten nach Links werfen für 3D Effekt über der Karte */
             box-shadow: -5px 0 25px rgba(0,0,0,0.5);
             overflow-y: auto; 
         }
+        .menu-overlay.open { transform: translateX(0); }
+        @media (max-width: 600px) { .menu-overlay { width: 100%; min-width: 0; } }
 
-        .menu-overlay.open {
-            transform: translateX(0); /* Fährt rein auf 0 */
-        }
-
-        /* Responsive: Auf Handys volle Breite */
-        @media (max-width: 600px) {
-            .menu-overlay {
-                width: 100%;
-                min-width: 0;
-            }
-        }
-
-        .menu-content {
-            width: 100%;
-            padding-bottom: 3rem;
-        }
-
-        .close-btn {
-            align-self: flex-end; /* Rechts oben im Container */
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--text-color);
-            margin-bottom: 10px;
-            margin-top: -10px;
-        }
-
-        .theme-switch-btn {
-            background: var(--card-bg);
-            color: var(--text-color);
-            border: 1px solid var(--btn-border);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            width: fit-content;
-            transition: background 0.2s;
-        }
+        .menu-content { width: 100%; padding-bottom: 3rem; }
+        .close-btn { align-self: flex-end; font-size: 2rem; cursor: pointer; color: var(--text-color); margin: -10px 0 10px 0; }
         
-        .theme-switch-btn:hover {
-            filter: brightness(1.1);
+        .theme-switch-btn {
+            background: var(--card-bg); color: var(--text-color);
+            border: 1px solid var(--btn-border); padding: 10px 20px;
+            border-radius: 8px; font-size: 1rem; cursor: pointer;
+            margin-top: 0.5rem; display: flex; align-items: center; gap: 10px;
+            width: fit-content; transition: background 0.2s;
         }
+        .theme-switch-btn:hover { filter: brightness(1.1); }
 
         /* --- PICKER STYLES --- */
         .picker-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            width: 100%;
+            display: flex; justify-content: center; align-items: center;
+            gap: 10px; width: 100%; max-width: 800px; /* Container limit */
             height: 160px;
+            user-select: none; -webkit-user-select: none; 
+            padding-bottom: 5px;
         }
-
         .picker-separator {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--text-color);
-            margin-top: -10px;
-            opacity: 0.5;
+            font-size: 2rem; font-weight: bold; color: var(--text-color); margin-top: -10px; opacity: 0.5;
         }
 
         .wheel-picker {
-            width: 160px;
+            /* HIER WURDE DIE BREITE ANGEPASST */
+            flex: 1; /* Nimmt flexibel Platz ein */
+            max-width: 240px; /* Aber nicht zu breit auf Desktop */
+            min-width: 140px; /* Nicht zu schmal auf SE */
             height: 150px;
             background-color: var(--picker-bg);
-            border-radius: 12px;
-            position: relative;
-            overflow: hidden;
+            border-radius: 12px; position: relative; overflow: hidden;
             border: 2px solid transparent;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%);
             mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%);
+            cursor: grab;
         }
+        .wheel-picker:active { cursor: grabbing; }
 
         .charger-picker { border-color: var(--charger-color); color: var(--charger-color); }
         .restaurant-picker { border-color: var(--food-color); color: var(--food-color); }
 
         .picker-strip {
-            position: absolute;
-            top: 0; left: 0; width: 100%;
-            transform: translateY(0);
-            transition: transform 3s cubic-bezier(0.1, 1.0, 0.2, 1.0); 
+            position: absolute; top: 0; left: 0; width: 100%;
+            will-change: transform; 
         }
 
         .picker-item {
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 1.1rem;
-            white-space: nowrap;
-            cursor: pointer;
+            height: 50px; display: flex; justify-content: center; align-items: center;
+            font-weight: bold; font-size: 1.1rem; white-space: nowrap;
+            pointer-events: none; 
         }
-
+        
         .picker-highlight-bar {
-            position: absolute;
-            top: 50%; left: 0; width: 100%; height: 50px;
-            margin-top: -25px;
-            background-color: var(--picker-highlight);
+            position: absolute; top: 50%; left: 0; width: 100%; height: 50px;
+            margin-top: -25px; background-color: var(--picker-highlight);
             pointer-events: none;
             border-top: 1px solid rgba(255,255,255,0.15);
             border-bottom: 1px solid rgba(255,255,255,0.15);
@@ -257,22 +164,13 @@
         }
 
         /* --- MAP & ICONS --- */
-        #map {
-            flex-grow: 1;
-            width: 100%;
-            z-index: 1; /* Map ganz unten */
-        }
+        #map { flex-grow: 1; width: 100%; z-index: 1; }
 
         .custom-div-icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            color: white;
-            font-size: 10px;
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; color: white; font-size: 10px;
             box-shadow: 0 3px 8px rgba(0,0,0,0.6);
-            border-radius: 50%;
-            border: 2px solid white;
+            border-radius: 50%; border: 2px solid white;
         }
         
         .bg-tesla { background: #e82127; }
@@ -281,28 +179,14 @@
         .bg-mcd { background: #ffc72c; color: #000; } 
         .bg-bk { background: #512814; }
         
-        .leaflet-popup-content-wrapper {
-            background: var(--card-bg);
-            color: var(--text-color);
-            border-radius: 8px;
-        }
-        .leaflet-popup-tip {
-            background: var(--card-bg);
-        }
+        .leaflet-popup-content-wrapper { background: var(--card-bg); color: var(--text-color); border-radius: 8px; }
+        .leaflet-popup-tip { background: var(--card-bg); }
 
-        /* Impressum Style Box */
         .imprint-box {
-            border-top: 1px solid var(--btn-border);
-            margin-top: 20px;
-            padding-top: 15px;
-            padding-bottom: 20px;
-            font-size: 0.9rem;
-            color: var(--muted-text);
+            border-top: 1px solid var(--btn-border); margin-top: 20px; padding-top: 15px; padding-bottom: 20px;
+            font-size: 0.9rem; color: var(--muted-text);
         }
-        .imprint-box strong {
-            color: var(--text-color);
-        }
-
+        .imprint-box strong { color: var(--text-color); }
     </style>
 </head>
 <body>
@@ -333,100 +217,274 @@
 
     <main id="map"></main>
 
-    <!-- SIDEBAR MENU (Rechts, 1/3 Breite) -->
+    <!-- SIDEBAR MENU -->
     <div id="menu-overlay" class="menu-overlay">
-        <!-- Close X oben rechts in der Leiste -->
         <div class="close-btn" onclick="toggleMenu()" title="Menü schließen">✕</div>
         
         <div class="menu-content">
-            <!-- 1. Einstellungen -->
             <h2>Einstellungen</h2>
             <button class="theme-switch-btn" onclick="toggleTheme()">
-                <span id="theme-btn-text">Dunkler Modus</span> 
-                <span>☀️/🌙</span>
+                <span id="theme-btn-text">Dunkler Modus</span> <span>☀️/🌙</span>
             </button>
 
-            <!-- 2. Hintergrund -->
             <h2>Hintergrund</h2>
-            <p>
-                Wer kennt das nicht: Man sitzt im Auto, weiß man muss eh noch laden und würde das gern mit einem kurzen Snack verbinden. 
-                Aber wo? "Charge and eat" bietet die Lösung. 
-            </p>
-            <p>
-                Mit einem einfachen Filter kann entweder der Ladeanbieter oder das Fastfood-Restaurant ausgewählt werden. Und schon weiß man Bescheid.
-            </p>
-            <p>
-                Die Datenbank wird regelmäßig aktualisiert.<br>
-                <span style="color: var(--charger-color); font-weight: bold;">Aktueller Stand: 01/2026</span>
-            </p>
-            <p>
-                Falls ihr eine gute Idee für eine Verbesserung der Seite habt, schreibt mir gern unter: <a href="mailto:contact@chargeandeat.de?subject=Featurerequest">contact@chargeandeat.de</a>. 
-            </p>
+            <p>Wer kennt das nicht: Man sitzt im Auto, weiß man muss eh noch laden und würde das gern mit einem kurzen Snack verbinden. Aber wo? "Charge and eat" bietet die Lösung.</p>
+            <p>Die Datenbank wird regelmäßig aktualisiert.<br><span style="color: var(--charger-color); font-weight: bold;">Aktueller Stand: 01/2026</span></p>
+            <p>Feature Request? <a href="mailto:contact@chargeandeat.de?subject=Featurerequest">contact@chargeandeat.de</a>.</p>
 
-            <!-- 3. Rechtliches & Spaß -->
             <h2>Datenschutz & Co.</h2>
-            <p>
-                <strong>🍪 Cookies:</strong> Essen wir am liebsten selber. Daher verwendet diese Seite keine Tracking-Cookies und speichert keine persönlichen Daten auf unseren Servern. 
-            </p>
-            <p>
-                <strong>🍔 Haftung für Snacks:</strong> Diese Karte dient der groben Orientierung. Wir übernehmen keine Gewährleistung für die Verfügbarkeit der Ladesäulen, die Knusprigkeit der Pommes oder ob die Eismaschine bei McDonald's mal wieder "leider defekt" ist. Nutzung auf eigene Gefahr (und eigenen Hunger).
-            </p>
+            <p><strong>🍪 Cookies:</strong> Keine Tracking-Cookies.</p>
+            <p><strong>🍔 Haftung:</strong> Nutzung auf eigene Gefahr.</p>
             
-            <!-- Impressum -->
             <div class="imprint-box">
                 <h3>Impressum</h3>
                 Angaben gemäß § 3 DDG:<br><br>
-                <strong>Max Mustermann</strong><br>
-                c/o Online-Impressum.de #5479 <br>
-                Europaring 90 <br>
-                53757 Sankt Augustin <br>
-                Deutschland<br><br>
+                <strong>Martin Wetzel</strong><br>
+                c/o Online-Impressum.de #5479<br>
+                Europaring 90<br>
+                53757 Sankt Augustin<br>Germany<br><br>
                 Kontakt: contact@chargeandeat.de
             </div>
         </div>
     </div>
 
     <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
-
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
     <script>
     /* --------------------------------------------------
-       1. VARIABLEN
+       1. MAP & DATA GLOBAL VARIABLES
     -------------------------------------------------- */
     let allData = []; 
     let currentFilters = { chargerId: 'all', foodId: 'all' };
     const markerGroup = L.layerGroup(); 
 
+    // Map Init
+    const map = L.map('map').setView([51.1657, 10.4515], 6); 
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap' }).addTo(map);
+    markerGroup.addTo(map);
+
     /* --------------------------------------------------
-       2. UI & THEME LOGIK
+       2. WHEEL PICKER CLASS (Touch, Momentum & Spin)
     -------------------------------------------------- */
-    function toggleMenu() {
-        const overlay = document.getElementById('menu-overlay');
-        overlay.classList.toggle('open');
+    class WheelPicker {
+        constructor(containerId, options, initialId, onSelectCallback) {
+            this.container = document.getElementById(containerId);
+            this.strip = this.container.querySelector('.picker-strip');
+            this.options = options;
+            this.onSelect = onSelectCallback;
+            
+            this.itemHeight = 50; 
+            
+            // Loop-Logic
+            this.repeatCount = 15; // Genug Wiederholungen für den Spin
+            this.fullData = [];
+            for(let i=0; i<this.repeatCount; i++) {
+                this.fullData = this.fullData.concat(options);
+            }
+            
+            // DOM füllen
+            this.renderItems();
+            
+            // Zentrierung berechnen
+            this.centerOffset = (150 / 2) - (this.itemHeight / 2);
+            
+            // Auf Start-Item springen (silent init)
+            this.jumpToId(initialId);
+
+            // Event Variables
+            this.isDragging = false;
+            this.startY = 0;
+            this.currentTranslate = 0;
+            
+            this.velocity = 0;
+            this.lastY = 0;
+            this.lastTime = 0;
+
+            this.initEvents();
+        }
+
+        renderItems() {
+            this.strip.innerHTML = '';
+            this.fullData.forEach((item) => {
+                const el = document.createElement('div');
+                el.className = 'picker-item';
+                el.textContent = item.label;
+                el.dataset.id = item.id;
+                this.strip.appendChild(el);
+            });
+        }
+
+        updatePosition(y) {
+            this.strip.style.transform = `translateY(${y}px)`;
+        }
+
+        jumpToId(id) {
+            // Wir suchen das Item im MITTLEREN Block
+            const middleSetIndex = Math.floor(this.repeatCount / 2);
+            const optionsIndex = this.options.findIndex(o => o.id === id);
+            
+            const targetIndex = (middleSetIndex * this.options.length) + (optionsIndex !== -1 ? optionsIndex : 0);
+            
+            this.currentTranslate = -(targetIndex * this.itemHeight) + this.centerOffset;
+            this.updatePosition(this.currentTranslate);
+        }
+
+        // --- NEW: Spin Animation Function ---
+        spinToId(targetId, duration = 3000) {
+            // 1. Ziel-Index im mittleren Block finden
+            const middleSetIndex = Math.floor(this.repeatCount / 2);
+            const optionsIndex = this.options.findIndex(o => o.id === targetId);
+            const targetIndex = (middleSetIndex * this.options.length) + (optionsIndex !== -1 ? optionsIndex : 0);
+            
+            const targetTranslate = -(targetIndex * this.itemHeight) + this.centerOffset;
+
+            // 2. Start-Position setzen: Wir simulieren, dass wir "weit weg" sind (z.B. 4 Sets weiter unten)
+            const offsetSets = 4;
+            const startIndex = targetIndex + (offsetSets * this.options.length);
+            const startTranslate = -(startIndex * this.itemHeight) + this.centerOffset;
+
+            // 3. Hart auf Startposition setzen (ohne Animation)
+            this.strip.style.transition = 'none';
+            this.updatePosition(startTranslate);
+            
+            // Force browser reflow
+            this.strip.offsetHeight; 
+
+            // 4. Animation starten (Zurück zum Ziel gleiten)
+            this.strip.style.transition = `transform ${duration}ms cubic-bezier(0.1, 1.0, 0.2, 1.0)`;
+            this.updatePosition(targetTranslate);
+            
+            this.currentTranslate = targetTranslate;
+        }
+
+        initEvents() {
+            // Touch & Mouse Handler
+            const dragStart = (y) => {
+                this.isDragging = true;
+                this.startY = y;
+                this.startTranslate = this.currentTranslate;
+                this.strip.style.transition = 'none'; // Stoppt Spin bei Interaktion
+                this.velocity = 0;
+                this.lastY = y;
+                this.lastTime = Date.now();
+            };
+
+            const dragMove = (y, e) => {
+                if (!this.isDragging) return;
+                if (e.cancelable) e.preventDefault();
+                const now = Date.now();
+                const deltaY = y - this.startY;
+                const dt = now - this.lastTime;
+                if (dt > 0) this.velocity = (y - this.lastY) / dt;
+                this.lastY = y;
+                this.lastTime = now;
+                this.currentTranslate = this.startTranslate + deltaY;
+                this.updatePosition(this.currentTranslate);
+            };
+
+            const dragEnd = () => {
+                if (!this.isDragging) return;
+                this.isDragging = false;
+                const momentum = this.velocity * 300; 
+                const maxMomentum = 2000; 
+                const clampedMomentum = Math.max(-maxMomentum, Math.min(maxMomentum, momentum));
+                this.currentTranslate += clampedMomentum;
+                this.strip.style.transition = 'transform 0.6s cubic-bezier(0.1, 1.0, 0.2, 1.0)';
+                this.snapToNearest();
+            };
+
+            // Touch
+            this.container.addEventListener('touchstart', (e) => dragStart(e.touches[0].clientY), {passive: false});
+            window.addEventListener('touchmove', (e) => dragMove(e.touches[0].clientY, e), {passive: false});
+            window.addEventListener('touchend', dragEnd);
+
+            // Mouse
+            this.container.addEventListener('mousedown', (e) => dragStart(e.clientY));
+            window.addEventListener('mousemove', (e) => dragMove(e.clientY, e));
+            window.addEventListener('mouseup', dragEnd);
+
+            // Wheel
+            this.container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                this.strip.style.transition = 'none';
+                this.currentTranslate -= (e.deltaY * 0.5);
+                this.updatePosition(this.currentTranslate);
+                clearTimeout(this.wheelTimeout);
+                this.wheelTimeout = setTimeout(() => this.snapToNearest(), 100);
+            }, { passive: false });
+        }
+
+        snapToNearest() {
+            const rawIndex = -(this.currentTranslate - this.centerOffset) / this.itemHeight;
+            let targetIndex = Math.round(rawIndex);
+            if(targetIndex < 0) targetIndex = 0;
+            if(targetIndex >= this.fullData.length) targetIndex = this.fullData.length - 1;
+
+            let newTranslate = -(targetIndex * this.itemHeight) + this.centerOffset;
+            this.strip.style.transition = 'transform 0.5s cubic-bezier(0.1, 1.0, 0.2, 1.0)';
+            this.currentTranslate = newTranslate;
+            this.updatePosition(newTranslate);
+
+            const selectedItem = this.fullData[targetIndex];
+            if(this.onSelect && selectedItem) {
+                this.onSelect(selectedItem.id);
+            }
+            setTimeout(() => { this.checkInfiniteLoop(targetIndex); }, 500);
+        }
+
+        checkInfiniteLoop(currentIndex) {
+            const realCount = this.options.length;
+            const totalItems = this.fullData.length;
+            const buffer = realCount * 2;
+            
+            if (currentIndex < buffer || currentIndex > totalItems - buffer) {
+                const relativeIndex = currentIndex % realCount;
+                const middleSet = Math.floor(this.repeatCount / 2);
+                const newIndex = (middleSet * realCount) + relativeIndex;
+                this.strip.style.transition = 'none';
+                this.currentTranslate = -(newIndex * this.itemHeight) + this.centerOffset;
+                this.updatePosition(this.currentTranslate);
+            }
+        }
     }
 
+    /* --------------------------------------------------
+       3. APP LOGIC
+    -------------------------------------------------- */
+    const chargerOptions = [
+        { id: 'all', label: 'Alle Ladeanbieter' },
+        { id: 'tesla', label: 'Tesla Supercharger' },
+        { id: 'ionity', label: 'IONITY' },
+        { id: 'enbw', label: 'EnBW' },
+        { id: 'fastned', label: 'Fastned' },
+        { id: 'allego', label: 'Allego' },
+        { id: 'aral', label: 'Aral pulse' }
+    ];
+
+    const foodOptions = [
+        { id: 'all', label: 'Alle Restaurants' },
+        { id: 'mcdonalds', label: "McDonald's" },
+        { id: 'burgerking', label: 'Burger King' },
+        { id: 'kfc', label: 'KFC' },
+        { id: 'subway', label: 'Subway' },
+        { id: 'nordsee', label: 'Nordsee' },
+        { id: 'lounge', label: 'Lounge / Store' }
+    ];
+
+    function toggleMenu() { document.getElementById('menu-overlay').classList.toggle('open'); }
+
     function updateThemeButtonText(isLight) {
-        const btnText = document.getElementById('theme-btn-text');
-        btnText.innerText = isLight ? "Heller Modus aktiv" : "Dunkler Modus aktiv";
+        document.getElementById('theme-btn-text').innerText = isLight ? "Heller Modus aktiv" : "Dunkler Modus aktiv";
     }
 
     function initializeTheme() {
         const storedTheme = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         let isLight = false;
-
-        if (storedTheme) {
-            if (storedTheme === 'light') isLight = true;
-        } else if (!prefersDark) {
-            isLight = true;
-            localStorage.setItem('theme', 'light');
-        }
-
+        if (storedTheme === 'light') isLight = true;
+        else if (!storedTheme && !prefersDark) { isLight = true; }
         if (isLight) document.body.classList.add('light-mode');
-        else if (!storedTheme) localStorage.setItem('theme', 'dark');
-        
         updateThemeButtonText(isLight);
     }
 
@@ -437,32 +495,23 @@
         updateThemeButtonText(isLight);
     }
 
-    /* --------------------------------------------------
-       3. MAP INIT
-    -------------------------------------------------- */
-    const map = L.map('map').setView([50.35, 12.5], 8); 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap' }).addTo(map);
-    markerGroup.addTo(map); 
-
-    /* --------------------------------------------------
-       4. DATEN FILTERN & MARKER
-    -------------------------------------------------- */
     function renderMarkers() {
         markerGroup.clearLayers(); 
-        let count = 0;
-        
         allData.forEach(entry => {
-            const chargerMatch = (currentFilters.chargerId === 'all') || (entry.charger_id === currentFilters.chargerId);
-            const foodMatch    = (currentFilters.foodId === 'all')    || (entry.food_id === currentFilters.foodId);
+            const cFilter = currentFilters.chargerId;
+            const fFilter = currentFilters.foodId;
+            const chargerMatch = (cFilter === 'all') || (entry.charger_id && entry.charger_id.includes(cFilter));
+            const foodMatch    = (fFilter === 'all')    || (entry.food_id && entry.food_id.includes(fFilter));
             
             if (chargerMatch && foodMatch) {
-                count++;
                 const myIcon = L.divIcon({
-                    className: `custom-div-icon ${entry.badge_class}`,
+                    className: `custom-div-icon ${entry.badge_class || 'bg-tesla'}`,
                     html: `⚡`,
                     iconSize: [30, 30], iconAnchor: [15, 15], 
                 });
-                L.marker([entry.lat, entry.lon], {icon: myIcon}).addTo(markerGroup).bindPopup(entry.description); 
+                L.marker([entry.lat, entry.lon], {icon: myIcon})
+                 .addTo(markerGroup)
+                 .bindPopup(`<b>${entry.description || 'Ladestation'}</b><br>${entry.note || ''}`); 
             }
         });
     }
@@ -470,124 +519,40 @@
     async function loadData() {
         try {
             const response = await fetch('data.json?t=' + new Date().getTime());
-            if (!response.ok) throw new Error("Keine data.json gefunden");
+            if (!response.ok) throw new Error("Fallback required");
             allData = await response.json();
             renderMarkers(); 
         } catch (error) {
-            console.error(error);
-        }
-    }
-
-    /* --------------------------------------------------
-       5. PICKER LOGIK
-    -------------------------------------------------- */
-    const itemHeight = 50; 
-    const pickerHeight = 150;
-
-    const chargerOptions = [
-        { id: 'tesla', text: 'Tesla' },
-        { id: 'ionity', text: 'IONITY' },
-        { id: 'enbw', text: 'EnBW' },
-        { id: 'all', text: 'Alle Ladeanbieter' } 
-    ];
-
-    const foodOptions = [
-        { id: 'mcdonald', text: "McDonald's" },
-        { id: 'burger king', text: 'Burger King' },
-        { id: 'lounge', text: 'Lounge' },
-        { id: 'all', text: 'Alle Restaurants' }
-    ];
-
-    function initPickerStrip(stripId, options, repeatCount = 10) {
-        const strip = document.getElementById(stripId);
-        let htmlContent = '';
-        for (let i = 0; i < repeatCount; i++) {
-            options.forEach(opt => {
-                htmlContent += `<div class="picker-item" data-id="${opt.id}">${opt.text}</div>`;
-            });
-        }
-        strip.innerHTML = htmlContent;
-    }
-
-    function scrollToElement(stripId, targetElement, duration = null) {
-        if(!targetElement) return;
-        const strip = document.getElementById(stripId);
-        
-        if (duration !== null) strip.style.transition = `transform ${duration}`;
-        else strip.style.transition = ''; 
-
-        const items = Array.from(strip.querySelectorAll('.picker-item'));
-        const index = items.indexOf(targetElement);
-
-        if (index !== -1) {
-            const centerOffset = (pickerHeight / 2) - (itemHeight / 2); 
-            const totalScroll = (index * itemHeight) - centerOffset;
-            strip.style.transform = `translateY(-${totalScroll}px)`;
-
-            const selectedId = targetElement.getAttribute('data-id');
-            if (stripId === 'chargerStrip') currentFilters.chargerId = selectedId;
-            if (stripId === 'restaurantStrip') currentFilters.foodId = selectedId;
+            allData = [
+                { lat: 52.52, lon: 13.40, charger_id: 'tesla', food_id: 'mcdonalds', description: 'Beispiel Tesla Berlin', badge_class: 'bg-tesla' },
+                { lat: 48.13, lon: 11.58, charger_id: 'ionity', food_id: 'burgerking', description: 'Beispiel Ionity München', badge_class: 'bg-ionity' }
+            ];
             renderMarkers();
         }
     }
 
-    function spinToWin(stripId, targetId) {
-        const strip = document.getElementById(stripId);
-        const items = Array.from(strip.querySelectorAll('.picker-item'));
-        const foundIndex = items.map(i => i.getAttribute('data-id')).lastIndexOf(targetId);
-        if (foundIndex !== -1) scrollToElement(stripId, items[foundIndex]);
-    }
-
-    function initInteract(stripId, containerId) {
-        const strip = document.getElementById(stripId);
-        const container = document.getElementById(containerId);
-
-        strip.addEventListener('click', (e) => {
-            if(e.target.classList.contains('picker-item')) {
-                strip.style.transition = 'transform 0.3s ease-out';
-                scrollToElement(stripId, e.target, '0.3s ease-out');
-            }
-        });
-
-        let isScrolling = false;
-        container.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            if (isScrolling) return;
-            isScrolling = true;
-            setTimeout(() => { isScrolling = false; }, 50); 
-            const direction = e.deltaY > 0 ? 1 : -1;
-            const items = strip.querySelectorAll('.picker-item');
-            
-            let currentY = 0;
-            if (strip.style.transform) currentY = Math.abs(parseInt(strip.style.transform.replace('translateY(', '').replace('px)', '')));
-            
-            let currentIndex = Math.round((currentY - (pickerHeight/2 - itemHeight/2)) / itemHeight);
-            let newIndex = currentIndex + direction;
-            if (newIndex < 0) newIndex = 0;
-            if (newIndex >= items.length) newIndex = items.length - 1;
-
-            strip.style.transition = 'transform 0.1s linear';
-            scrollToElement(stripId, items[newIndex], '0.1s linear');
-        }, { passive: false });
-    }
-
     /* --------------------------------------------------
-       6. START
+       4. INIT ON LOAD (WITH SPIN)
     -------------------------------------------------- */
     window.addEventListener('DOMContentLoaded', () => {
         initializeTheme();
-        initPickerStrip('chargerStrip', chargerOptions, 10);
-        initPickerStrip('restaurantStrip', foodOptions, 10);
-        initInteract('chargerStrip', 'picker-charger-container');
-        initInteract('restaurantStrip', 'picker-food-container');
         loadData();         
 
+        const chargerWheel = new WheelPicker('picker-charger-container', chargerOptions, 'all', (id) => {
+            currentFilters.chargerId = id;
+            renderMarkers();
+        });
+        
+        const foodWheel = new WheelPicker('picker-food-container', foodOptions, 'all', (id) => {
+            currentFilters.foodId = id;
+            renderMarkers();
+        });
+
+        // 2. Den "Spin" Effekt starten
         setTimeout(() => {
-            document.getElementById('chargerStrip').style.transition = 'transform 3s cubic-bezier(0.1, 1.0, 0.2, 1.0)';
-            document.getElementById('restaurantStrip').style.transition = 'transform 3s cubic-bezier(0.1, 1.0, 0.2, 1.0)';
-            spinToWin('chargerStrip', 'all');
-            spinToWin('restaurantStrip', 'all');
-        }, 100);
+            chargerWheel.spinToId('all', 3000);
+            foodWheel.spinToId('all', 3000);
+        }, 500);
     });
     </script>
 </body>
