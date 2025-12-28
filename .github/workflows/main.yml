@@ -1,0 +1,47 @@
+name: Monatliches Karten-Update
+
+on:
+  schedule:
+    - cron: '0 6 1 * *' # Am 1. des Monats um 3 Uhr
+  workflow_dispatch:      # Zum manuellen Starten
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Abhängigkeiten installieren
+        run: pip install requests
+
+      - name: Scraper laufen lassen
+        id: scraper  # WICHTIG: ID vergeben, damit wir Outputs lesen können
+        run: python scraper_germany.py
+
+      - name: Zusammenfassung schreiben
+        if: always() # Auch ausführen, wenn der Scraper crasht (dann ist count leer, aber wir sehen was)
+        run: |
+          echo "### 🗺️ Karten-Update Bericht" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **Status:** Erfolgreich durchgelaufen" >> $GITHUB_STEP_SUMMARY
+          echo "- **Neue Gesamtzahl:** ${{ steps.scraper.outputs.NEW_COUNT }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Veränderung:** ${{ steps.scraper.outputs.DIFF }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Neue Daten speichern
+        # Nur ausführen, wenn sich die Zahl geändert hat (Diff != 0)
+        if: steps.scraper.outputs.DIFF != '+0' 
+        run: |
+          git config --global user.name 'Data-Bot'
+          git config --global user.email 'bot@noreply.github.com'
+          git add data.json
+          # Hier nutzen wir die Variable aus Python für die Commit-Nachricht
+          git commit -m "${{ steps.scraper.outputs.MSG }}"
+          git push
