@@ -237,7 +237,7 @@
             <p>Wer kennt das nicht: Man sitzt im Auto, weiß man muss eh noch laden und würde das gern mit einem kurzen Snack verbinden. Aber wo? "Charge and eat" bietet die Lösung.</p>
             <p>Die Datenbank wird regelmäßig aktualisiert.<br>
                 <span style="color: var(--charger-color); font-weight: bold;">
-                    Aktueller Stand: <span id="datum-anzeige">wird geladen...</span>
+                    Aktueller Stand: <span id="danzeigeElement">wird geladen...</span>
                 </span>
             </p>
             <p>Feature Request? <a href="mailto:contact@chargeandeat.de?subject=Featurerequest">contact@chargeandeat.de</a>.</p>
@@ -573,13 +573,22 @@
     <script src="meta.js"></script>
 
     <script>
-        // Wir prüfen kurz, ob die Datei meta.js erfolgreich geladen wurde
+        // Wir prüfen, ob die Variable aus meta.js geladen wurde
         if (typeof standDaten !== 'undefined') {
-            const anzeigeElement = document.getElementById('datum-anzeige');
-            if (anzeigeElement) {
-                anzeigeElement.innerText = standDaten;
+            
+            // 1. Aktualisiere das Datum im Menü (WICHTIG)
+            const menuElement = document.getElementById('danzeigeElement');
+            if (menuElement) {
+                menuElement.innerText = standDaten;
+            }
+
+            // 2. Aktualisiere das Datum oben rechts (falls du das noch hast)
+            const headerElement = document.getElementById('datum-anzeige');
+            if (headerElement) {
+                headerElement.innerText = standDaten;
             }
         }
     </script>
 </body>
 </html>
+
