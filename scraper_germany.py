@@ -13,6 +13,12 @@ LAT_END   = 55.2
 LON_START = 5.5
 LON_END   = 15.5
 
+LAT_START = 48.5
+LAT_END   = 48.9
+LON_START = 9
+LON_END   = 10
+
+
 # Step Size für das Raster (ca. 50x50km pro Kachel)
 STEP_SIZE = 0.5
 
@@ -135,54 +141,131 @@ def process_tile(bbox_str):
             for k, c in ALLOWED_CHARGERS.items():
                 if k in full_search: 
                     config, fid = c, k
-                    if k == "pulse": fid = "aral" # Normalisierung für ID
+                    if k == "pulse": fid = "aral" # Normalisierung
                     break
             
             if config:
-                el['clean_info'] = config
+                # 1. Daten vorbereiten
+                el['clean_info'] = config.copy() 
                 el['id_key'] = fid
-                # Schönen Namen setzen falls "Unbekannt"
-                el['clean_info']['name'] = config['name'] if "Unbekannt" in name else name
-                chargers.append(el)
+                
+                # 2. Namen generieren (Logik wie eben besprochen)
+                display_name = name 
+                if "Unbekannt" in display_name:
+                    if tags.get("brand"):
+                        display_name = tags.get("brand") 
+                    elif tags.get("operator"):
+                         display_name = tags.get("operator")
+                    else:
+                        display_name = config['name']
+                    
+                    city = tags.get("addr:city")
+                    if city:
+                        display_name = f"{display_name} ({city})"
+                
+                el['clean_info']['name'] = display_name
+
+                # 3. DUPLIKAT-CHECK (Neu!)
+                # Wir schauen in die Liste 'chargers', ob schon einer da ist.
+                # 3. DUPLIKAT-CHECK (Korrigiert & Sicher)
+                is_duplicate = False
+                
+                # Wir holen die Koordinaten sicher über deine Hilfsfunktion
+                # (verhindert Absturz, falls es ein Polygon/Way ist)
+                current_lat, current_lon = get_coords(el)
+
+                if current_lat and current_lon:
+                    for existing in chargers:
+                        # Nur prüfen, wenn es der gleiche Anbieter ist
+                        if existing['id_key'] == el['id_key']:
+                            
+                            # Koordinaten des bereits gespeicherten Punkts holen
+                            existing_lat, existing_lon = get_coords(existing)
+                            
+                            if existing_lat and existing_lon:
+                                # KORREKTUR: Hier deine Funktion 'calculate_distance' nutzen
+                                dist = calculate_distance(current_lat, current_lon, existing_lat, existing_lon)
+                                
+                                if dist < 30: # 30 Meter Radius
+                                    is_duplicate = True
+                                    break
+                
+                # Nur hinzufügen, wenn kein Duplikat gefunden wurde
+                if not is_duplicate:
+                    chargers.append(el)
 
     # --- Matching Logic ---
+    # --- Matching Logic ---
     tile_matches = []
+    
     for c in chargers:
         c_lat, c_lon = get_coords(c)
         if not c_lat: continue
+        
+        # 1. Wir suchen das NÄCHSTE Restaurant zu diesem Charger
+        best_food = None
+        closest_dist = 999999 # Startwert hoch setzen
+
         for r in restaurants:
             r_lat, r_lon = get_coords(r)
             if not r_lat: continue
             
-            # Grober Vorab-Filter um Rechenzeit zu sparen (ca 2km Box)
+            # Grober Vorab-Filter (ca 2km Box)
             if abs(c_lat - r_lat) > 0.02 or abs(c_lon - r_lon) > 0.02: continue
             
             dist = calculate_distance(c_lat, c_lon, r_lat, r_lon)
-            if dist <= SEARCH_RADIUS_METERS:
-                poi_type = r['clean_info']['name']
-                poi_real = r.get('tags', {}).get('name', poi_type)
-                
-                # Unique ID erstellen
-                match_id = f"{c.get('id')}_{r.get('id')}"
-                
-                tile_matches.append({
-                    "unique_id": match_id,
-                    "lat": c_lat,
-                    "lon": c_lon,
-                    "charger_id": c['id_key'],
-                    "food_id": r['id_key'],
-                    "title": f"{c['clean_info']['name']} + {poi_real}",
-                    "badge_class": c['clean_info']['class'],
-                    "note": f"{int(dist)}m zu Fuß", # Kurzer Text für Popup
-                    "description": (
-                        f"<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>{c['clean_info']['name']}</div>"
-                        f"<div style='display:flex; align-items:center; gap:5px;'>"
-                        f"  <span>🍽️</span>"
-                        f"  <span style='font-weight:600;'>{poi_real}</span>"
-                        f"</div>"
-                        f"<div style='font-size:0.85em; color:var(--muted-text); margin-top:4px;'>Entfernung: {int(dist)}m</div>"
-                    )
-                })
+            
+            # Ist dies das nächste Restaurant innerhalb des Suchradius?
+            if dist <= SEARCH_RADIUS_METERS and dist < closest_dist:
+                closest_dist = dist
+                best_food = r
+        
+        # 2. Daten für JSON vorbereiten
+        
+        # Basis-Info (Charger)
+        entry = {
+            "lat": c_lat,
+            "lon": c_lon,
+            "charger_id": c['id_key'], # z.B. "tesla"
+            "food_id": None,           # Standard: Kein Essen
+            "title": c['clean_info']['name'],
+            "badge_class": c['clean_info']['class'],
+            "note": "Keine Verpflegung",
+            "popup_name": c['clean_info']['name']
+        }
+
+        # Wenn Essen gefunden wurde
+        if best_food:
+            # WICHTIG: Leerzeichen für CSS entfernen (z.B. "burger king" -> "burger-king")
+            food_clean_id = best_food['id_key'].replace(" ", "-")
+            food_real_name = best_food.get('tags', {}).get('name', best_food['clean_info']['name'])
+            
+            entry['food_id'] = food_clean_id
+            entry['note'] = f"{int(closest_dist)}m zu {food_real_name}"
+            
+            # Schöne Beschreibung für das Popup bauen
+            entry['description'] = (
+                f"<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>{c['clean_info']['name']}</div>"
+                f"<div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>"
+                f"  <span>🍽️</span>"
+                f"  <span style='font-weight:600;'>{food_real_name}</span>"
+                f"</div>"
+                f"<div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: {int(closest_dist)}m</div>"
+            )
+            # Unique ID Kombi
+            entry["unique_id"] = f"{c.get('id')}_{best_food.get('id')}"
+        
+        else:
+            # Kein Essen: Nur Charger Info im Popup
+            entry['description'] = (
+                f"<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>{c['clean_info']['name']}</div>"
+                f"<div style='font-size:0.85em; color:#999; margin-top:5px;'>Kein Fastfood in direkter Nähe ({SEARCH_RADIUS_METERS}m)</div>"
+            )
+            # Unique ID nur vom Charger
+            entry["unique_id"] = f"{c.get('id')}_nofood"
+
+        tile_matches.append(entry)
+
     return tile_matches
 
 # --- HAUPTPROGRAMM ---

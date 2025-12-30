@@ -180,6 +180,16 @@
         .bg-allego{ background: #267a11; }
         .bg-aral{ background: #100dc9; }
         
+        /* --- RANDFARBEN (Essen) --- */
+        .outline-mcdonald { border-color: #FFC72C !important; }
+        .outline-burger-king { border-color: #FFFFFF !important; }
+        .outline-kfc { border-color: #8b0000 !important; }
+        .outline-subway { border-color: #008C15 !important; }
+        .outline-nordsee { border-color: #004d99 !important; }
+        .outline-lounge { border-color: #6600cc !important; }
+        .outline-none { border-color: rgba(128, 128, 128, 0.5) !important; }
+
+
         .leaflet-popup-content-wrapper { background: var(--card-bg); color: var(--text-color); border-radius: 8px; }
         .leaflet-popup-tip { background: var(--card-bg); }
 
@@ -265,17 +275,32 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     
+    <!-- MARKER CLUSTER JS (NEU) -->
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    
     <script>
     /* --------------------------------------------------
        1. MAP & DATA GLOBAL VARIABLES
     -------------------------------------------------- */
     let allData = []; 
     let currentFilters = { chargerId: 'all', foodId: 'all' };
-    const markerGroup = L.layerGroup(); 
+    
+    // NEU: MarkerClusterGroup statt LayerGroup
+    const markerGroup = L.markerClusterGroup({
+        maxClusterRadius: 40, // Kleiner Radius = Marker teilen sich früher auf
+        showCoverageOnHover: false, // Zeigt nicht das blaue Polygon beim Hovern
+        disableClusteringAtZoom: 14 // Ab Zoom 14 keine Cluster mehr, alle Marker sichtbar
+    }); 
 
     // Map Init
-    const map = L.map('map').setView([50.35, 12.5], 8); 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 9, attribution: '&copy; OpenStreetMap' }).addTo(map);
+    const map = L.map('map').setView([51.16, 10.45], 6); // Deutschland-Zentrum
+    
+    // (Optional: Dark Mode Karte passt besser zu den bunten Markern, aber OSM Standard ist auch ok)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { 
+        maxZoom: 19, 
+        attribution: '&copy; OpenStreetMap & CartoDB' 
+    }).addTo(map);
+    
     markerGroup.addTo(map);
 
     /* --------------------------------------------------
@@ -509,24 +534,64 @@
         updateThemeButtonText(isLight);
     }
 
+    /* --------------------------------------------------
+       RENDER FUNCTION (Angepasst für Design & Cluster)
+    -------------------------------------------------- */
     function renderMarkers() {
-        markerGroup.clearLayers(); 
-        allData.forEach(entry => {
-            const cFilter = currentFilters.chargerId;
-            const fFilter = currentFilters.foodId;
-            const chargerMatch = (cFilter === 'all') || (entry.charger_id && entry.charger_id.includes(cFilter));
-            const foodMatch    = (fFilter === 'all')    || (entry.food_id && entry.food_id.includes(fFilter));
+        markerGroup.clearLayers();
+
+        allData.forEach(item => {
+            // 1. FILTER
+            // Beachte: item.charger_id kommt jetzt aus dem neuen Python Script
+            if (currentFilters.chargerId !== 'all' && item.charger_id !== currentFilters.chargerId) return;
             
-            if (chargerMatch && foodMatch) {
-                const myIcon = L.divIcon({
-                    className: `custom-div-icon ${entry.badge_class || 'bg-tesla'}`,
-                    html: `⚡`,
-                    iconSize: [30, 30], iconAnchor: [15, 15], 
-                });
-                L.marker([entry.lat, entry.lon], {icon: myIcon})
-                 .addTo(markerGroup)
-                 .bindPopup(`<b>${entry.description || 'Ladestation'}</b><br>${entry.note || ''}`); 
+            // Fastfood Filter (Achtung auf Leerzeichen bei 'burger king' vs 'burger-king')
+            // Im Python haben wir spaces durch '-' ersetzt, im Picker (JS) sind sie aber noch mit Space.
+            // Wir normalisieren hier kurz:
+            let itemFoodId = item.food_id ? item.food_id.replace('-', ' ') : 'none';
+            if (currentFilters.foodId !== 'all') {
+                if (!item.food_id) return; // Wenn Filter an ist, aber Ort kein Essen hat -> weg
+                if (itemFoodId !== currentFilters.foodId) return;
             }
+
+            // 2. DESIGN ZUSAMMENBAUEN
+            // Füllfarbe Charger
+            let bgClass = "bg-" + item.charger_id; // z.B. bg-tesla
+            
+            // Randfarbe Essen
+            let outlineClass = "outline-none";
+            if (item.food_id) {
+                outlineClass = "outline-" + item.food_id; // z.B. outline-mcdonald
+            }
+
+            // Kleines Icon für den Marker (optional, z.B. Blitz)
+            let iconCode = '<i class="fa-solid fa-bolt"></i>'; 
+            // Falls du keine FontAwesome hast, nimm einfach einen leeren String oder den Anfangsbuchstaben:
+            // let iconCode = item.clean_info.name.substring(0,1);
+
+            const myIcon = L.divIcon({
+                className: `custom-div-icon ${bgClass} ${outlineClass}`,
+                html: "", // Leer lassen für reine Farbpunkte
+                iconSize: [20, 20], // Größe des Punktes
+                iconAnchor: [10, 10], // Mitte
+                popupAnchor: [0, -10]
+            });
+
+            // 3. MARKER ERSTELLEN
+            const marker = L.marker([item.lat, item.lon], { icon: myIcon });
+            
+            // Popup Inhalt
+            let popupContent = `
+                <div style="text-align:center; min-width: 150px;">
+                    <h3 style="margin:0; border:none;">${item.clean_info.name}</h3>
+                    <div style="margin-top:5px; font-size:0.9em;">
+                        ${item.clean_info.details || "Laden verfügbar"}
+                    </div>
+                </div>
+            `;
+            marker.bindPopup(popupContent);
+            
+            markerGroup.addLayer(marker);
         });
     }
 
