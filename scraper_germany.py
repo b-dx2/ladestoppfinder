@@ -13,14 +13,8 @@ LAT_END   = 55.2
 LON_START = 5.5
 LON_END   = 15.5
 
-LAT_START = 48.5
-LAT_END   = 48.9
-LON_START = 9
-LON_END   = 10
-
-
 # Step Size für das Raster (ca. 50x50km pro Kachel)
-STEP_SIZE = 0.5
+STEP_SIZE = 0.4
 
 SEARCH_RADIUS_METERS = 300 
 OUTPUT_FILENAME = "data.json" 
@@ -56,9 +50,12 @@ ALLOWED_FOOD = {
 
 # Spezielle Keywords, die bevorzugt als "Lounge" behandelt werden
 LOUNGE_KEYWORDS = [
-    "bk world", "tegut", "rewe ready", "rewe to go", 
-    "audi charging hub", "porsche", "seed & greet", "seed&greet",
-    "lounge", "charging hub"
+    "bk world", 
+    "audi charging hub", "audi charging",
+    "porsche", 
+    "seed & greet", "seed&greet",
+    "charging hub",
+    "rewe ready", "rewe to go", "tegut" # Oft an Ladeparks (EnBW), daher sinnvoll
 ]
 
 # --- HILFSFUNKTIONEN ---
@@ -256,13 +253,8 @@ def process_tile(bbox_str):
             entry["unique_id"] = f"{c.get('id')}_{best_food.get('id')}"
         
         else:
-            # Kein Essen: Nur Charger Info im Popup
-            entry['description'] = (
-                f"<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>{c['clean_info']['name']}</div>"
-                f"<div style='font-size:0.85em; color:#999; margin-top:5px;'>Kein Fastfood in direkter Nähe ({SEARCH_RADIUS_METERS}m)</div>"
-            )
-            # Unique ID nur vom Charger
-            entry["unique_id"] = f"{c.get('id')}_nofood"
+            # Kein Essen gefunden -> Überspringen
+            continue
 
         tile_matches.append(entry)
 
