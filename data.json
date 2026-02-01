@@ -44,28 +44,6 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY Oftringen</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>KFC</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 164m</div>"
   },
   {
-    "lat": 47.2711261,
-    "lon": 8.4396593,
-    "charger_id": "tesla",
-    "food_id": "mcdonald",
-    "title": "Affoltern Supercharger",
-    "badge_class": "bg-tesla",
-    "note": "98m zu McDonald's",
-    "popup_name": "Affoltern Supercharger",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Affoltern Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 98m</div>"
-  },
-  {
-    "lat": 47.2720253,
-    "lon": 8.4377796,
-    "charger_id": "tesla",
-    "food_id": "mcdonald",
-    "title": "Obfelden Supercharger",
-    "badge_class": "bg-tesla",
-    "note": "75m zu McDonald's",
-    "popup_name": "Obfelden Supercharger",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Obfelden Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 75m</div>"
-  },
-  {
     "lat": 47.1999726,
     "lon": 8.7945541,
     "charger_id": "tesla",
@@ -550,15 +528,15 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 104m</div>"
   },
   {
-    "lat": 47.8556827,
-    "lon": 8.7933756,
+    "lat": 47.855592,
+    "lon": 8.7933604,
     "charger_id": "tesla",
     "food_id": "mcdonald",
     "title": "Tesla Supercharger",
     "badge_class": "bg-tesla",
-    "note": "120m zu McDonald's",
+    "note": "126m zu McDonald's",
     "popup_name": "Tesla Supercharger",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Tesla Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 120m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Tesla Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 126m</div>"
   },
   {
     "lat": 48.0881315,
@@ -825,6 +803,28 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>München Riem Arcaden Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 130m</div>"
   },
   {
+    "lat": 48.1453601,
+    "lon": 11.7908287,
+    "charger_id": "ionity",
+    "food_id": "kfc",
+    "title": "IONITY Parsdorf",
+    "badge_class": "bg-ionity",
+    "note": "137m zu KFC",
+    "popup_name": "IONITY Parsdorf",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY Parsdorf</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>KFC</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 137m</div>"
+  },
+  {
+    "lat": 47.9065045,
+    "lon": 11.7174097,
+    "charger_id": "ionity",
+    "food_id": "burger-king",
+    "title": "IONITY Holzkirchen Süd",
+    "badge_class": "bg-ionity",
+    "note": "25m zu Burger King Holzkirchen",
+    "popup_name": "IONITY Holzkirchen Süd",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY Holzkirchen Süd</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King Holzkirchen</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 25m</div>"
+  },
+  {
     "lat": 48.1464874,
     "lon": 11.7902722,
     "charger_id": "tesla",
@@ -845,28 +845,6 @@
     "note": "81m zu McDonald's",
     "popup_name": "Vaterstetten Supercharger",
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Vaterstetten Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 81m</div>"
-  },
-  {
-    "lat": 48.1454204,
-    "lon": 11.7907837,
-    "charger_id": "ionity",
-    "food_id": "kfc",
-    "title": "Ionity",
-    "badge_class": "bg-ionity",
-    "note": "130m zu KFC",
-    "popup_name": "Ionity",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Ionity</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>KFC</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 130m</div>"
-  },
-  {
-    "lat": 47.9064846,
-    "lon": 11.7174067,
-    "charger_id": "ionity",
-    "food_id": "burger-king",
-    "title": "IONITY Holzkirchen Süd",
-    "badge_class": "bg-ionity",
-    "note": "28m zu Burger King Holzkirchen",
-    "popup_name": "IONITY Holzkirchen Süd",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY Holzkirchen Süd</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King Holzkirchen</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 28m</div>"
   },
   {
     "lat": 47.8484961,
@@ -1203,11 +1181,11 @@
     "lon": 8.4373686,
     "charger_id": "enbw",
     "food_id": "mcdonald",
-    "title": "EnBW",
+    "title": "EnBW Energie Baden-Württemberg AG",
     "badge_class": "bg-enbw",
     "note": "117m zu McDonald's",
-    "popup_name": "EnBW",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 117m</div>"
+    "popup_name": "EnBW Energie Baden-Württemberg AG",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 117m</div>"
   },
   {
     "lat": 48.4568303,
@@ -1302,11 +1280,11 @@
     "lon": 9.0728236,
     "charger_id": "allego",
     "food_id": "lounge",
-    "title": "Allego GmbH",
+    "title": "Allego",
     "badge_class": "bg-allego",
     "note": "66m zu REWE To Go",
-    "popup_name": "Allego GmbH",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego GmbH</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 66m</div>"
+    "popup_name": "Allego",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 66m</div>"
   },
   {
     "lat": 48.2038744,
@@ -1835,6 +1813,17 @@
     "note": "36m zu REWE To Go",
     "popup_name": "Aral pulse",
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 36m</div>"
+  },
+  {
+    "lat": 48.5109206,
+    "lon": 11.5820186,
+    "charger_id": "ionity",
+    "food_id": "subway",
+    "title": "Ionity Schweitenkirchen",
+    "badge_class": "bg-ionity",
+    "note": "81m zu Subway",
+    "popup_name": "Ionity Schweitenkirchen",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Ionity Schweitenkirchen</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 81m</div>"
   },
   {
     "lat": 48.2593265,
@@ -2904,6 +2893,39 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Metz Sud Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 185m</div>"
   },
   {
+    "lat": 49.2151448,
+    "lon": 6.1717427,
+    "charger_id": "ionity",
+    "food_id": "mcdonald",
+    "title": "IONITY Hauconcourt",
+    "badge_class": "bg-ionity",
+    "note": "128m zu McDonald's",
+    "popup_name": "IONITY Hauconcourt",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY Hauconcourt</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 128m</div>"
+  },
+  {
+    "lat": 49.0796365,
+    "lon": 6.1095516,
+    "charger_id": "fastned",
+    "food_id": "mcdonald",
+    "title": "Fastned",
+    "badge_class": "bg-fastned",
+    "note": "223m zu McDonald's",
+    "popup_name": "Fastned",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Fastned</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 223m</div>"
+  },
+  {
+    "lat": 49.2164899,
+    "lon": 6.1710994,
+    "charger_id": "tesla",
+    "food_id": "mcdonald",
+    "title": "Metz Supercharger",
+    "badge_class": "bg-tesla",
+    "note": "73m zu McDonald's",
+    "popup_name": "Metz Supercharger",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Metz Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 73m</div>"
+  },
+  {
     "lat": 49.2095077,
     "lon": 6.9664271,
     "charger_id": "enbw",
@@ -3168,6 +3190,17 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Rewe To Go</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 22m</div>"
   },
   {
+    "lat": 49.0376227,
+    "lon": 8.687333,
+    "charger_id": "aral",
+    "food_id": "mcdonald",
+    "title": "ARAL PULSE",
+    "badge_class": "bg-aral",
+    "note": "146m zu McDonald's",
+    "popup_name": "ARAL PULSE",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>ARAL PULSE</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 146m</div>"
+  },
+  {
     "lat": 49.003839,
     "lon": 8.4475409,
     "charger_id": "enbw",
@@ -3232,105 +3265,6 @@
     "note": "107m zu Nordsee",
     "popup_name": "EnBW",
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Nordsee</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 107m</div>"
-  },
-  {
-    "lat": 49.0444371,
-    "lon": 9.2617919,
-    "charger_id": "enbw",
-    "food_id": "nordsee",
-    "title": "EnBW",
-    "badge_class": "bg-enbw",
-    "note": "59m zu Nordsee",
-    "popup_name": "EnBW",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Nordsee</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 59m</div>"
-  },
-  {
-    "lat": 49.0451775,
-    "lon": 9.2660533,
-    "charger_id": "enbw",
-    "food_id": "nordsee",
-    "title": "EnBW",
-    "badge_class": "bg-enbw",
-    "note": "76m zu Nordsee",
-    "popup_name": "EnBW",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Nordsee</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 76m</div>"
-  },
-  {
-    "lat": 49.0453074,
-    "lon": 9.2662162,
-    "charger_id": "ionity",
-    "food_id": "nordsee",
-    "title": "IONITY",
-    "badge_class": "bg-ionity",
-    "note": "93m zu Nordsee",
-    "popup_name": "IONITY",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Nordsee</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 93m</div>"
-  },
-  {
-    "lat": 49.0442999,
-    "lon": 9.261643,
-    "charger_id": "ionity",
-    "food_id": "nordsee",
-    "title": "IONITY",
-    "badge_class": "bg-ionity",
-    "note": "77m zu Nordsee",
-    "popup_name": "IONITY",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Nordsee</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 77m</div>"
-  },
-  {
-    "lat": 49.2044026,
-    "lon": 9.4888402,
-    "charger_id": "tesla",
-    "food_id": "mcdonald",
-    "title": "Öhringen Supercharger",
-    "badge_class": "bg-tesla",
-    "note": "88m zu McDonald's",
-    "popup_name": "Öhringen Supercharger",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Öhringen Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 88m</div>"
-  },
-  {
-    "lat": 49.2043331,
-    "lon": 9.4883722,
-    "charger_id": "enbw",
-    "food_id": "mcdonald",
-    "title": "EnBW Energie Baden-Württemberg AG",
-    "badge_class": "bg-enbw",
-    "note": "57m zu McDonald's",
-    "popup_name": "EnBW Energie Baden-Württemberg AG",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 57m</div>"
-  },
-  {
-    "lat": 49.1431379,
-    "lon": 9.3097702,
-    "charger_id": "enbw",
-    "food_id": "burger-king",
-    "title": "EnBW",
-    "badge_class": "bg-enbw",
-    "note": "53m zu Burger King",
-    "popup_name": "EnBW",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 53m</div>"
-  },
-  {
-    "lat": 49.0578212,
-    "lon": 9.2670893,
-    "charger_id": "enbw",
-    "food_id": "mcdonald",
-    "title": "EnBW Energie Baden-Württemberg AG",
-    "badge_class": "bg-enbw",
-    "note": "50m zu McDonald's",
-    "popup_name": "EnBW Energie Baden-Württemberg AG",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 50m</div>"
-  },
-  {
-    "lat": 49.143612,
-    "lon": 9.3087912,
-    "charger_id": "enbw",
-    "food_id": "mcdonald",
-    "title": "EnBW",
-    "badge_class": "bg-enbw",
-    "note": "99m zu McDonald's",
-    "popup_name": "EnBW",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 99m</div>"
   },
   {
     "lat": 49.1021522,
@@ -3608,15 +3542,26 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 155m</div>"
   },
   {
-    "lat": 49.0011995,
-    "lon": 13.220055,
+    "lat": 49.0012091,
+    "lon": 13.2200477,
     "charger_id": "aral",
     "food_id": "lounge",
     "title": "Aral pulse",
     "badge_class": "bg-aral",
-    "note": "37m zu REWE To Go",
+    "note": "38m zu REWE To Go",
     "popup_name": "Aral pulse",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 37m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 38m</div>"
+  },
+  {
+    "lat": 49.0011858,
+    "lon": 13.2204661,
+    "charger_id": "aral",
+    "food_id": "lounge",
+    "title": "Aral pulse",
+    "badge_class": "bg-aral",
+    "note": "19m zu REWE To Go",
+    "popup_name": "Aral pulse",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 19m</div>"
   },
   {
     "lat": 49.0034002,
@@ -3694,28 +3639,6 @@
     "note": "50m zu McDonald's",
     "popup_name": "EnBW Energie Baden-Württemberg AG",
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 50m</div>"
-  },
-  {
-    "lat": 49.4563653,
-    "lon": 7.7973073,
-    "charger_id": "ionity",
-    "food_id": "lounge",
-    "title": "Ionity Kaiserslautern",
-    "badge_class": "bg-ionity",
-    "note": "142m zu REWE To Go",
-    "popup_name": "Ionity Kaiserslautern",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Ionity Kaiserslautern</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 142m</div>"
-  },
-  {
-    "lat": 49.4539971,
-    "lon": 7.7913709,
-    "charger_id": "allego",
-    "food_id": "mcdonald",
-    "title": "Allego",
-    "badge_class": "bg-allego",
-    "note": "31m zu McDonald's",
-    "popup_name": "Allego",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 31m</div>"
   },
   {
     "lat": 49.5541264,
@@ -4021,9 +3944,9 @@
     "food_id": "mcdonald",
     "title": "Endsee Supercharger",
     "badge_class": "bg-tesla",
-    "note": "224m zu McDonald's",
+    "note": "220m zu McDonald's",
     "popup_name": "Endsee Supercharger",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Endsee Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 224m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Endsee Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 220m</div>"
   },
   {
     "lat": 49.44477,
@@ -4032,9 +3955,9 @@
     "food_id": "mcdonald",
     "title": "ARAL Pulse",
     "badge_class": "bg-aral",
-    "note": "153m zu McDonald's",
+    "note": "139m zu McDonald's",
     "popup_name": "ARAL Pulse",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>ARAL Pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 153m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>ARAL Pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 139m</div>"
   },
   {
     "lat": 49.4855836,
@@ -4057,17 +3980,6 @@
     "note": "84m zu Burger King",
     "popup_name": "Ionity Dettelbach",
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Ionity Dettelbach</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 84m</div>"
-  },
-  {
-    "lat": 49.7695888,
-    "lon": 10.4702935,
-    "charger_id": "tesla",
-    "food_id": "mcdonald",
-    "title": "Geiselwind Supercharger",
-    "badge_class": "bg-tesla",
-    "note": "104m zu McDonald's",
-    "popup_name": "Geiselwind Supercharger",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Geiselwind Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 104m</div>"
   },
   {
     "lat": 49.6265931,
@@ -4222,17 +4134,6 @@
     "note": "174m zu Subway",
     "popup_name": "EnBW Energie Baden-Württemberg AG",
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 174m</div>"
-  },
-  {
-    "lat": 49.6580815,
-    "lon": 15.1208609,
-    "charger_id": "ionity",
-    "food_id": "mcdonald",
-    "title": "Ionity",
-    "badge_class": "bg-ionity",
-    "note": "150m zu McDonald's",
-    "popup_name": "Ionity",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Ionity</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 150m</div>"
   },
   {
     "lat": 49.9605511,
@@ -4695,6 +4596,17 @@
     "note": "161m zu Burger King",
     "popup_name": "EnBW Energie Baden-Württemberg AG",
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 161m</div>"
+  },
+  {
+    "lat": 50.1889778,
+    "lon": 9.1780309,
+    "charger_id": "enbw",
+    "food_id": "burger-king",
+    "title": "ENBW",
+    "badge_class": "bg-enbw",
+    "note": "72m zu Burger King",
+    "popup_name": "ENBW",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>ENBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 72m</div>"
   },
   {
     "lat": 49.9560336,
@@ -5247,61 +5159,6 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Bad Camberg Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 128m</div>"
   },
   {
-    "lat": 50.5714785,
-    "lon": 8.6900725,
-    "charger_id": "fastned",
-    "food_id": "kfc",
-    "title": "Fastned Ferniestraße REWE",
-    "badge_class": "bg-fastned",
-    "note": "84m zu KFC",
-    "popup_name": "Fastned Ferniestraße REWE",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Fastned Ferniestraße REWE</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>KFC</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 84m</div>"
-  },
-  {
-    "lat": 50.5399194,
-    "lon": 8.6500831,
-    "charger_id": "enbw",
-    "food_id": "subway",
-    "title": "EnBW",
-    "badge_class": "bg-enbw",
-    "note": "232m zu Subway",
-    "popup_name": "EnBW",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 232m</div>"
-  },
-  {
-    "lat": 50.2085908,
-    "lon": 8.5992256,
-    "charger_id": "allego",
-    "food_id": "burger-king",
-    "title": "Allego",
-    "badge_class": "bg-allego",
-    "note": "254m zu Burger King",
-    "popup_name": "Allego",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 254m</div>"
-  },
-  {
-    "lat": 50.5664809,
-    "lon": 8.5025065,
-    "charger_id": "enbw",
-    "food_id": "subway",
-    "title": "EnBW",
-    "badge_class": "bg-enbw",
-    "note": "242m zu Subway",
-    "popup_name": "EnBW",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 242m</div>"
-  },
-  {
-    "lat": 50.5717561,
-    "lon": 8.6858549,
-    "charger_id": "enbw",
-    "food_id": "subway",
-    "title": "EnBW",
-    "badge_class": "bg-enbw",
-    "note": "209m zu Subway",
-    "popup_name": "EnBW",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 209m</div>"
-  },
-  {
     "lat": 50.5883842,
     "lon": 8.7079475,
     "charger_id": "tesla",
@@ -5423,61 +5280,6 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Ebersdorf bei Coburg Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 47m</div>"
   },
   {
-    "lat": 50.2028861,
-    "lon": 11.7766213,
-    "charger_id": "tesla",
-    "food_id": "mcdonald",
-    "title": "Münchberg-Nord Supercharger",
-    "badge_class": "bg-tesla",
-    "note": "177m zu McDonald's",
-    "popup_name": "Münchberg-Nord Supercharger",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Münchberg-Nord Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 177m</div>"
-  },
-  {
-    "lat": 50.2027502,
-    "lon": 11.776983,
-    "charger_id": "allego",
-    "food_id": "mcdonald",
-    "title": "Allego (Münchberg)",
-    "badge_class": "bg-allego",
-    "note": "149m zu McDonald's",
-    "popup_name": "Allego (Münchberg)",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego (Münchberg)</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 149m</div>"
-  },
-  {
-    "lat": 50.5500393,
-    "lon": 11.7881103,
-    "charger_id": "allego",
-    "food_id": "subway",
-    "title": "Allego",
-    "badge_class": "bg-allego",
-    "note": "183m zu Subway",
-    "popup_name": "Allego",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 183m</div>"
-  },
-  {
-    "lat": 50.3124082,
-    "lon": 11.8810745,
-    "charger_id": "enbw",
-    "food_id": "mcdonald",
-    "title": "EnBW Schnellladestation",
-    "badge_class": "bg-enbw",
-    "note": "33m zu McDonald's",
-    "popup_name": "EnBW Schnellladestation",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Schnellladestation</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 33m</div>"
-  },
-  {
-    "lat": 50.2023776,
-    "lon": 11.7796049,
-    "charger_id": "enbw",
-    "food_id": "mcdonald",
-    "title": "EnBW Energie Baden-Württemberg AG (Münchberg)",
-    "badge_class": "bg-enbw",
-    "note": "43m zu McDonald's",
-    "popup_name": "EnBW Energie Baden-Württemberg AG (Münchberg)",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG (Münchberg)</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 43m</div>"
-  },
-  {
     "lat": 50.4974883,
     "lon": 12.1701787,
     "charger_id": "tesla",
@@ -5487,39 +5289,6 @@
     "note": "79m zu McDonald's",
     "popup_name": "Plauen Supercharger",
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Plauen Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 79m</div>"
-  },
-  {
-    "lat": 50.8475361,
-    "lon": 5.6995808,
-    "charger_id": "allego",
-    "food_id": "mcdonald",
-    "title": "Allego",
-    "badge_class": "bg-allego",
-    "note": "233m zu McDonald's",
-    "popup_name": "Allego",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 233m</div>"
-  },
-  {
-    "lat": 50.9576094,
-    "lon": 5.6940069,
-    "charger_id": "fastned",
-    "food_id": "burger-king",
-    "title": "Fastned",
-    "badge_class": "bg-fastned",
-    "note": "28m zu Burger King",
-    "popup_name": "Fastned",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Fastned</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 28m</div>"
-  },
-  {
-    "lat": 50.7917066,
-    "lon": 5.5291963,
-    "charger_id": "allego",
-    "food_id": "mcdonald",
-    "title": "Allego",
-    "badge_class": "bg-allego",
-    "note": "214m zu McDonald's",
-    "popup_name": "Allego",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 214m</div>"
   },
   {
     "lat": 50.8580063,
@@ -5586,39 +5355,6 @@
     "note": "89m zu Burger King",
     "popup_name": "Aachen Supercharger",
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aachen Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 89m</div>"
-  },
-  {
-    "lat": 50.9419869,
-    "lon": 6.6523622,
-    "charger_id": "enbw",
-    "food_id": "mcdonald",
-    "title": "EnBW mobility+ AG",
-    "badge_class": "bg-enbw",
-    "note": "63m zu McDonald's",
-    "popup_name": "EnBW mobility+ AG",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW mobility+ AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 63m</div>"
-  },
-  {
-    "lat": 50.8321396,
-    "lon": 6.4587838,
-    "charger_id": "aral",
-    "food_id": "burger-king",
-    "title": "ARAL Pulse",
-    "badge_class": "bg-aral",
-    "note": "49m zu Burger King",
-    "popup_name": "ARAL Pulse",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>ARAL Pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 49m</div>"
-  },
-  {
-    "lat": 50.8978427,
-    "lon": 6.6822999,
-    "charger_id": "tesla",
-    "food_id": "mcdonald",
-    "title": "Kerpen Supercharger",
-    "badge_class": "bg-tesla",
-    "note": "99m zu McDonald's",
-    "popup_name": "Kerpen Supercharger",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Kerpen Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 99m</div>"
   },
   {
     "lat": 50.9179004,
@@ -5819,17 +5555,6 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 48m</div>"
   },
   {
-    "lat": 50.9990138,
-    "lon": 7.8385917,
-    "charger_id": "ionity",
-    "food_id": "mcdonald",
-    "title": "Ionity",
-    "badge_class": "bg-ionity",
-    "note": "64m zu McDonald's",
-    "popup_name": "Ionity",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Ionity</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 64m</div>"
-  },
-  {
     "lat": 50.816914,
     "lon": 8.0859139,
     "charger_id": "tesla",
@@ -5935,9 +5660,9 @@
     "food_id": "burger-king",
     "title": "EnBW Energie Baden-Württemberg AG",
     "badge_class": "bg-enbw",
-    "note": "28m zu Burger King",
+    "note": "27m zu Burger King",
     "popup_name": "EnBW Energie Baden-Württemberg AG",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 28m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 27m</div>"
   },
   {
     "lat": 50.7339546,
@@ -5988,11 +5713,22 @@
     "lon": 9.2449445,
     "charger_id": "ionity",
     "food_id": "burger-king",
-    "title": "Ladestation (max. 350kW)",
+    "title": "IONITY",
     "badge_class": "bg-ionity",
     "note": "115m zu Burger King",
-    "popup_name": "Ladestation (max. 350kW)",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Ladestation (max. 350kW)</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 115m</div>"
+    "popup_name": "IONITY",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>IONITY</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 115m</div>"
+  },
+  {
+    "lat": 50.7373234,
+    "lon": 9.2473823,
+    "charger_id": "allego",
+    "food_id": "burger-king",
+    "title": "Allego",
+    "badge_class": "bg-allego",
+    "note": "106m zu Burger King",
+    "popup_name": "Allego",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Allego</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 106m</div>"
   },
   {
     "lat": 50.8336889,
@@ -6001,9 +5737,9 @@
     "food_id": "mcdonald",
     "title": "Ionity Kirchheim (Tal)",
     "badge_class": "bg-ionity",
-    "note": "161m zu McDonald's",
+    "note": "163m zu McDonald's",
     "popup_name": "Ionity Kirchheim (Tal)",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Ionity Kirchheim (Tal)</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 161m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Ionity Kirchheim (Tal)</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 163m</div>"
   },
   {
     "lat": 50.8325644,
@@ -6015,6 +5751,17 @@
     "note": "53m zu Burger King",
     "popup_name": "EnBW Energie Baden-Württemberg AG",
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 53m</div>"
+  },
+  {
+    "lat": 50.6597272,
+    "lon": 9.6737786,
+    "charger_id": "allego",
+    "food_id": "lounge",
+    "title": "allego",
+    "badge_class": "bg-allego",
+    "note": "15m zu tegut… teo",
+    "popup_name": "allego",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>allego</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>tegut… teo</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 15m</div>"
   },
   {
     "lat": 50.8520967,
@@ -6213,17 +5960,6 @@
     "note": "121m zu McDonald's",
     "popup_name": "HyperNetz",
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>HyperNetz</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 121m</div>"
-  },
-  {
-    "lat": 50.9120758,
-    "lon": 12.0653329,
-    "charger_id": "aral",
-    "food_id": "lounge",
-    "title": "Aral",
-    "badge_class": "bg-aral",
-    "note": "38m zu REWE To Go",
-    "popup_name": "Aral",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>REWE To Go</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 38m</div>"
   },
   {
     "lat": 50.8606323,
@@ -7084,26 +6820,26 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 169m</div>"
   },
   {
-    "lat": 51.1902996,
-    "lon": 14.4518489,
-    "charger_id": "aral",
-    "food_id": "mcdonald",
-    "title": "Aral pulse",
-    "badge_class": "bg-aral",
-    "note": "168m zu McDonald's",
-    "popup_name": "Aral pulse",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 168m</div>"
-  },
-  {
-    "lat": 51.1885657,
-    "lon": 14.4547316,
+    "lat": 51.1886025,
+    "lon": 14.454527,
     "charger_id": "tesla",
     "food_id": "mcdonald",
     "title": "Bautzen Supercharger",
     "badge_class": "bg-tesla",
-    "note": "197m zu McDonald's",
+    "note": "192m zu McDonald's",
     "popup_name": "Bautzen Supercharger",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Bautzen Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 197m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Bautzen Supercharger</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 192m</div>"
+  },
+  {
+    "lat": 51.1902961,
+    "lon": 14.4518449,
+    "charger_id": "aral",
+    "food_id": "mcdonald",
+    "title": "Aral pulse",
+    "badge_class": "bg-aral",
+    "note": "169m zu McDonald's",
+    "popup_name": "Aral pulse",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 169m</div>"
   },
   {
     "lat": 51.1701393,
@@ -8239,17 +7975,6 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW mobility+ AG und Co.KG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 23m</div>"
   },
   {
-    "lat": 51.9511201,
-    "lon": 8.5727074,
-    "charger_id": "enbw",
-    "food_id": "subway",
-    "title": "EnBW",
-    "badge_class": "bg-enbw",
-    "note": "19m zu Subway",
-    "popup_name": "EnBW",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 19m</div>"
-  },
-  {
     "lat": 52.061054,
     "lon": 8.644097,
     "charger_id": "aral",
@@ -8294,6 +8019,17 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW mobility+ AG und Co.KG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 31m</div>"
   },
   {
+    "lat": 51.9510135,
+    "lon": 8.5727283,
+    "charger_id": "enbw",
+    "food_id": "subway",
+    "title": "EnBW",
+    "badge_class": "bg-enbw",
+    "note": "29m zu Subway",
+    "popup_name": "EnBW",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Subway</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 29m</div>"
+  },
+  {
     "lat": 52.0251545,
     "lon": 8.8882488,
     "charger_id": "enbw",
@@ -8325,6 +8061,17 @@
     "note": "131m zu McDonald's",
     "popup_name": "EnBW mobility+ AG und Co.KG",
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW mobility+ AG und Co.KG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 131m</div>"
+  },
+  {
+    "lat": 52.0848076,
+    "lon": 9.3423957,
+    "charger_id": "enbw",
+    "food_id": "burger-king",
+    "title": "EnBW",
+    "badge_class": "bg-enbw",
+    "note": "18m zu Burger King",
+    "popup_name": "EnBW",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 18m</div>"
   },
   {
     "lat": 51.9472149,
@@ -8529,11 +8276,11 @@
     "lon": 11.627128,
     "charger_id": "enbw",
     "food_id": "burger-king",
-    "title": "EnBW",
+    "title": "EnBW Energie Baden-Württemberg AG",
     "badge_class": "bg-enbw",
     "note": "27m zu Burger King",
-    "popup_name": "EnBW",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 27m</div>"
+    "popup_name": "EnBW Energie Baden-Württemberg AG",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 27m</div>"
   },
   {
     "lat": 52.1751745,
@@ -9988,17 +9735,6 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 287m</div>"
   },
   {
-    "lat": 52.7554588,
-    "lon": 7.1640556,
-    "charger_id": "aral",
-    "food_id": "mcdonald",
-    "title": "aralgo",
-    "badge_class": "bg-aral",
-    "note": "52m zu McDonald's",
-    "popup_name": "aralgo",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>aralgo</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 52m</div>"
-  },
-  {
     "lat": 52.6576569,
     "lon": 8.1691683,
     "charger_id": "tesla",
@@ -10021,15 +9757,15 @@
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 34m</div>"
   },
   {
-    "lat": 52.6735007,
-    "lon": 9.6883878,
+    "lat": 52.6735022,
+    "lon": 9.6885752,
     "charger_id": "aral",
     "food_id": "mcdonald",
     "title": "Aral Pulse",
     "badge_class": "bg-aral",
-    "note": "130m zu McDonald's",
+    "note": "135m zu McDonald's",
     "popup_name": "Aral Pulse",
-    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 130m</div>"
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral Pulse</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>McDonald's</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 135m</div>"
   },
   {
     "lat": 52.8487952,
@@ -10525,6 +10261,17 @@
     "note": "226m zu Nordsee",
     "popup_name": "EnBW Energie Baden-Württemberg AG",
     "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>EnBW Energie Baden-Württemberg AG</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Nordsee</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 226m</div>"
+  },
+  {
+    "lat": 53.5881004,
+    "lon": 7.2187521,
+    "charger_id": "aral",
+    "food_id": "burger-king",
+    "title": "Aral",
+    "badge_class": "bg-aral",
+    "note": "11m zu Burger King",
+    "popup_name": "Aral",
+    "description": "<div style='margin-bottom:4px; font-weight:bold; font-size:1.1em; color:var(--charger-color)'>Aral</div><div style='display:flex; align-items:center; gap:5px; margin-top:5px;'>  <span>🍽️</span>  <span style='font-weight:600;'>Burger King</span></div><div style='font-size:0.85em; color:#666; margin-top:2px;'>Entfernung: 11m</div>"
   },
   {
     "lat": 53.582551,
