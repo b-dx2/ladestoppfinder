@@ -302,6 +302,31 @@
     // Deutschland-Zentrum
     const map = L.map('map').setView([49.80, 11.00], 7);
     
+    // --- NEU: Standort abfragen und Karte dorthin zentrieren ---
+    map.locate({ 
+        setView: true, 
+        maxZoom: 12,      // Verhindert, dass zu nah herangezoomt wird (12 ist ein guter Radius für die Umgebung)
+        timeout: 2000     // Bricht nach 5 Sekunden ab, falls kein GPS-Signal gefunden wird
+    });
+
+    // Optional, aber UX-technisch sehr sinnvoll: Einen Punkt am eigenen Standort anzeigen
+    map.on('locationfound', function(e) {
+        L.circleMarker(e.latlng, {
+            radius: 8,
+            fillColor: "#0078ff", // Ein typisches "Standort-Blau"
+            color: "#ffffff",
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 0.8
+        }).addTo(map).bindPopup("Dein aktueller Standort");
+    });
+
+    // Fehlerbehandlung (z.B. wenn der Nutzer die Freigabe verweigert)
+    map.on('locationerror', function(e) {
+        console.log("Standort konnte nicht ermittelt werden oder wurde verweigert:", e.message);
+        // Hier muss nichts weiter passieren, da die Karte bereits auf Deutschland zentriert ist.
+    });
+
     // (Optional: Dark Mode Karte passt besser zu den bunten Markern, aber OSM Standard ist auch ok)
     L.tileLayer('https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
         maxZoom: 18, // Du kannst auch maxZoom: 19 oder deinen gewünschten Wert setzen
