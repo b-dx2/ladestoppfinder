@@ -104,6 +104,7 @@ def process_tile(bbox_str):
         # NEU: getrennte Suche
         strong_search = (tags.get("brand", "") + " " + tags.get("operator", "") + " " + tags.get("network", "")).lower()
         weak_search   = (name or "").lower()        
+        full_search = (weak_search + " " + strong_search).strip()
         
         # --- POI Logic (Essen) ---
         is_poi = False
