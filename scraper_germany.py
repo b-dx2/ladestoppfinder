@@ -101,7 +101,9 @@ def process_tile(bbox_str):
         tags = el.get("tags", {})
         name = tags.get("name", "Unbekannt")
         # Wir suchen in Name, Brand und Operator (alles kleingeschrieben)
-        full_search = (name + " " + tags.get("brand", "") + " " + tags.get("operator", "")).lower()
+        # NEU: getrennte Suche
+        strong_search = (tags.get("brand", "") + " " + tags.get("operator", "") + " " + tags.get("network", "")).lower()
+        weak_search   = (name or "").lower()        
         
         # --- POI Logic (Essen) ---
         is_poi = False
@@ -134,17 +136,33 @@ def process_tile(bbox_str):
 
         # --- Charger Logic (Laden) ---
         elif tags.get("amenity") == "charging_station":
-            config, fid = None, None
+            config, fid, match_level = None, None, None
+
+            # 1) STRONG: brand/operator/network
             for k, c in ALLOWED_CHARGERS.items():
-                if k in full_search: 
-                    config, fid = c, k
-                    if k == "pulse": fid = "aral" # Normalisierung
+                if k in strong_search:
+                    config, fid, match_level = c, k, "strong"
+                    if k == "pulse": fid = "aral"  # Normalisierung
                     break
-            
+
+            # 2) LIKELY: name (Fallback)
+            if not config:
+                # Tesla-Fallback: Viele Tesla-Standorte heißen "Supercharger <Ort>" ohne "tesla" im Namen
+                if "supercharger" in weak_search:
+                    config, fid, match_level = ALLOWED_CHARGERS["tesla"], "tesla", "likely"
+                else:
+                    for k, c in ALLOWED_CHARGERS.items():
+                        if k in weak_search:
+                            config, fid, match_level = c, k, "likely"
+                            if k == "pulse": fid = "aral"
+                            break
+
             if config:
-                # 1. Daten vorbereiten
-                el['clean_info'] = config.copy() 
+                el['clean_info'] = config.copy()
                 el['id_key'] = fid
+                el['match_level'] = match_level  # NEU: "strong" oder "likely"
+                # ... ab hier dein bestehender Code (display_name, duplicate-check, append)
+
                 
                 # 2. Namen generieren (Logik wie eben besprochen)
                 display_name = name 
