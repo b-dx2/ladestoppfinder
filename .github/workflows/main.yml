@@ -36,7 +36,7 @@ jobs:
           git config --global user.name 'Update-Bot'
           git config --global user.email 'bot@noreply.github.com'
           
-          if [[ -n $(git status -s) ]]; then
+          if [[ -n $(git status -s data.json meta.js) ]]; then
             # HIER ÄNDERN: Wir fügen data.json UND meta.js hinzu
             git add data.json meta.js
             
