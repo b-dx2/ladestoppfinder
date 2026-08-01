@@ -40,25 +40,38 @@ CACHE_TTL_HOURS = 24
 MIN_SUCCESS_RATIO = 0.80
 
 # Overpass-Endpunkte in Reihenfolge der Praeferenz.
-# Bei Fehlern wird automatisch auf den naechsten rotiert.
+#
+# Auswahl auf Basis des Diagnoselaufs vom 01.08.2026:
+#   overpass-api.de        -> 200 OK, vollstaendige Daten. Primaerquelle.
+#   overpass.private.coffee-> liefert nur ohne UA sofort 429, mit UA ReadTimeout.
+#                             Nur als Notreserve, nicht als Primaerquelle.
+#   overpass.kumi.systems  -> gleiches Verhalten. Notreserve.
+#   overpass.osm.jp        -> SSL-Fehler unter LibreSSL. Entfernt.
+#   overpass.osm.ch        -> antwortet 200, aber mit 0 Elementen. GEFAEHRLICH:
+#                             wuerde stillschweigend eine leere Karte
+#                             produzieren. Bewusst NICHT aufgenommen.
 OVERPASS_ENDPOINTS = [
-    "https://overpass.private.coffee/api/interpreter",
     "https://overpass-api.de/api/interpreter",
+    "https://overpass.private.coffee/api/interpreter",
     "https://overpass.kumi.systems/api/interpreter",
-    "https://overpass.osm.jp/api/interpreter",
 ]
 
 # Pflicht fuer oeffentliche Overpass-Instanzen: identifizierbarer Client.
+# Ohne UA antwortet overpass-api.de mit 406 und private.coffee mit 429.
 USER_AGENT = (
     "ladestoppfinder/2.0 (monatlicher Datenabgleich; "
-    "+https://github.com/b-dx2/ladestoppfinder)"
+    "+https://github.com/b-dx2/ladestoppfinder; Kontakt via GitHub Issues)"
 )
 
-QUERY_TIMEOUT = 120        # Overpass-seitiges [timeout:...]
-HTTP_TIMEOUT = (15, 180)   # (connect, read)
-MAX_RETRIES = 5            # Versuche pro Kachel ueber alle Endpunkte hinweg
-BASE_PAUSE = 1.0           # Grundpause zwischen zwei Kacheln (Sekunden)
-MAX_PAUSE = 60.0
+QUERY_TIMEOUT = 90         # Overpass-seitiges [timeout:...]
+HTTP_TIMEOUT = (15, 120)   # (connect, read)
+MAX_RETRIES = 6            # Versuche pro Kachel ueber alle Endpunkte hinweg
+MAX_PAUSE = 90.0
+
+# overpass-api.de erlaubt laut /api/status genau 2 Slots gleichzeitig.
+# Wir arbeiten strikt sequenziell und halten einen Mindestabstand ein.
+MIN_REQUEST_INTERVAL = 4.0   # Sekunden zwischen zwei Requests, hart erzwungen
+BASE_PAUSE = 2.0             # zusaetzliche Grundpause zwischen zwei Kacheln
 
 FOOD_REGEX = (
     "McDonald|Burger King|Lounge|World|Hub|Tegut|Rewe|Porsche|Audi|"
@@ -110,6 +123,7 @@ SESSION.headers.update({
 })
 
 _endpoint_index = 0
+_last_request_ts = 0.0
 _stats = {"requests": 0, "retries": 0, "rate_limited": 0, "cache_hits": 0}
 
 
@@ -124,6 +138,25 @@ def rotate_endpoint():
     return current_endpoint()
 
 
+def reset_endpoint():
+    """Zurueck zur bevorzugten Instanz (overpass-api.de)."""
+    global _endpoint_index
+    _endpoint_index = 0
+
+
+def throttle():
+    """
+    Erzwingt einen Mindestabstand zwischen zwei Requests.
+    Das ist der eigentliche Schutz vor 429: nicht schneller senden,
+    als der Server erlaubt, statt Fehler nachtraeglich abzufangen.
+    """
+    global _last_request_ts
+    wait = MIN_REQUEST_INTERVAL - (time.time() - _last_request_ts)
+    if wait > 0:
+        time.sleep(wait)
+    _last_request_ts = time.time()
+
+
 def status_url(endpoint):
     return endpoint.rsplit("/api/", 1)[0] + "/api/status"
 
@@ -131,51 +164,54 @@ def status_url(endpoint):
 def wait_for_slot(endpoint, max_wait=90):
     """
     Fragt /api/status ab und wartet, bis ein Slot frei ist.
-    Genau das verhindert die 429er, statt sie nur abzufangen.
-    Bei nicht auswertbarer Antwort wird einfach weitergemacht.
+    Nur overpass-api.de liefert eine auswertbare Statusseite; bei allen
+    anderen Instanzen wird die Abfrage stillschweigend uebersprungen.
     """
+    if "overpass-api.de" not in endpoint:
+        return
     try:
         r = SESSION.get(status_url(endpoint), timeout=(10, 20))
         if r.status_code != 200:
             return
-        text = r.text
-
-        # "x slots available now." -> sofort frei
-        for line in text.splitlines():
+        for line in r.text.splitlines():
             line = line.strip()
             if "slots available now" in line:
                 return
-            if line.startswith("Slot available after:"):
-                # Format: "Slot available after: <ts>, in <n> seconds."
-                if ", in " in line:
-                    try:
-                        secs = int(line.split(", in ")[1].split(" ")[0])
-                    except (ValueError, IndexError):
-                        return
-                    secs = max(0, min(secs + 2, max_wait))
-                    if secs > 0:
-                        print(f" [warte {secs}s auf Slot]", end="", flush=True)
-                        time.sleep(secs)
+            if line.startswith("Slot available after:") and ", in " in line:
+                try:
+                    secs = int(line.split(", in ")[1].split(" ")[0])
+                except (ValueError, IndexError):
                     return
+                secs = max(0, min(secs + 2, max_wait))
+                if secs > 0:
+                    print(f" [warte {secs}s auf Slot]", end="", flush=True)
+                    time.sleep(secs)
+                return
     except requests.RequestException:
         return
 
 
-def overpass_query(query, label=""):
+def overpass_query(query):
     """
     Fuehrt eine Overpass-Query robust aus.
     Rueckgabe: Liste der Elemente oder None bei endgueltigem Fehler.
+
+    Wichtig: Eine leere Elementliste bei erfolgreicher Antwort gilt als
+    gueltiges Ergebnis (es gibt Kacheln ohne Ladesaeulen) - aber nur von
+    Instanzen, die wir als vertrauenswuerdig eingestuft haben.
     """
-    delay = 5.0
+    delay = 8.0
 
     for attempt in range(1, MAX_RETRIES + 1):
         endpoint = current_endpoint()
         wait_for_slot(endpoint)
+        throttle()
 
         try:
             _stats["requests"] += 1
-            # POST: Query im Body, nicht in der URL -> keine Laengenlimits,
-            # und viele Instanzen behandeln POST kulanter beim Rate-Limit.
+            # POST mit Query im Body. Bei overpass-api.de war POST im Test
+            # deutlich schneller als GET (0.6s statt 9.2s), weil die Antwort
+            # nicht aus dem URL-Cache neu berechnet wird.
             r = SESSION.post(endpoint, data={"data": query}, timeout=HTTP_TIMEOUT)
 
             if r.status_code == 200:
@@ -184,23 +220,29 @@ def overpass_query(query, label=""):
                 except ValueError:
                     print(" [ungueltiges JSON]", end="", flush=True)
 
-            elif r.status_code in (429, 504):
+            elif r.status_code == 429:
                 _stats["rate_limited"] += 1
                 retry_after = r.headers.get("Retry-After")
                 if retry_after and retry_after.isdigit():
-                    sleep_for = min(float(retry_after) + 1, MAX_PAUSE)
+                    # private.coffee/kumi schicken hier konsequent 60.
+                    sleep_for = min(float(retry_after) + 2, MAX_PAUSE)
                 else:
                     sleep_for = min(delay, MAX_PAUSE)
-                sleep_for += random.uniform(0, 2)  # Jitter gegen Sync-Effekte
-                print(f" [{r.status_code}, pause {sleep_for:.0f}s]", end="", flush=True)
+                sleep_for += random.uniform(0, 3)
+                print(f" [429, wechsle Server, pause {sleep_for:.0f}s]",
+                      end="", flush=True)
+                rotate_endpoint()      # sofort wechseln, nicht erst beim 2. Mal
                 time.sleep(sleep_for)
                 delay *= 2
-                if attempt >= 2:
-                    rotate_endpoint()
                 _stats["retries"] += 1
                 continue
 
-            elif r.status_code in (502, 503):
+            elif r.status_code == 406:
+                # Tritt nur ohne User-Agent auf. Sollte nie passieren.
+                print(" [406 - User-Agent fehlt!]", end="", flush=True)
+                return None
+
+            elif r.status_code in (502, 503, 504):
                 print(f" [{r.status_code}, Serverwechsel]", end="", flush=True)
                 rotate_endpoint()
                 time.sleep(min(delay, MAX_PAUSE))
@@ -212,6 +254,8 @@ def overpass_query(query, label=""):
                 print(f" [HTTP {r.status_code}]", end="", flush=True)
 
         except requests.Timeout:
+            # private.coffee und kumi.systems laufen mit UA regelmaessig
+            # in ReadTimeouts. Sofort weiterziehen statt lange warten.
             print(" [Timeout]", end="", flush=True)
             rotate_endpoint()
         except requests.RequestException as exc:
@@ -455,7 +499,7 @@ def process_tile(bbox_str):
     from_cache = elements is not None
 
     if not from_cache:
-        elements = overpass_query(build_query(bbox_str), label=bbox_str)
+        elements = overpass_query(build_query(bbox_str))
         if elements is None:
             return [], False
         cache_write(bbox_str, elements)
@@ -522,7 +566,7 @@ def main():
     # Zweiter Anlauf fuer fehlgeschlagene Kacheln
     if failed_tiles:
         print(f"\nZweiter Anlauf fuer {len(failed_tiles)} Kacheln ...")
-        rotate_endpoint()
+        reset_endpoint()   # zurueck auf overpass-api.de, ruhig und langsam
         still_failed = []
         for bbox in failed_tiles:
             print(f"  retry {bbox} ... ", end="", flush=True)
